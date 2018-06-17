@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="UDATestAddin">
+</Property><Property Name="Файл решения" Value="C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin.sln">
+</Property><Property Name="Файл параметров пользователя" Value="C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin.suo">
+</Property><Property Name="Date" Value="11 березня 2014 р.">
+</Property><Property Name="Time" Value="0:23">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="UDATestAddin.sln" Description="Успешно создана резервная копия файла C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\Backup\UDATestAddin.sln">
+</Event><Event ErrorLevel="0" Project="" Source="UDATestAddin.suo" Description="Успешно создана резервная копия файла C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\Backup\UDATestAddin.suo">
+</Event><Event ErrorLevel="0" Project="UDATestAddin" Source="UDATestAddin\UDATestAddin.csproj" Description="Успешно создана резервная копия файла проекта: C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\Backup\UDATestAddin\UDATestAddin.csproj">
+</Event><Event ErrorLevel="0" Project="UDATestAddin" Source="UDATestAddin\UDATestAddin.cs" Description="Успешно создана резервная копия файла C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\Backup\UDATestAddin\UDATestAddin.cs">
+</Event><Event ErrorLevel="0" Project="UDATestAddin" Source="UDATestAddin\Properties\AssemblyInfo.cs" Description="Успешно создана резервная копия файла C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\Backup\UDATestAddin\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="UDATestAddin" Source="UDATestAddin\UDATestCode.cs" Description="Успешно создана резервная копия файла C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\Backup\UDATestAddin\UDATestCode.cs">
+</Event><Event ErrorLevel="0" Project="UDATestAddin" Source="UDATestAddin\UDATestAddin.csproj" Description="Проект успешно преобразован">
+</Event><Event ErrorLevel="3" Project="UDATestAddin" Source="UDATestAddin\UDATestAddin.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="UDATestAddin.sln" Description="Преобразование решения успешно завершено">
+</Event><Event ErrorLevel="3" Project="" Source="UDATestAddin.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="UDATestAddin" Source="UDATestAddin\UDATestAddin.csproj" Description="Сканирование завершено: обновление для файлов проекта не требуется.">
+</Event></UpgradeLog>

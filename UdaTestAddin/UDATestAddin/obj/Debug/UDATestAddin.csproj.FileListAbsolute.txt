@@ -1,0 +1,40 @@
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.dll
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.pdb
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.ApplicationFramework.dll
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Database.dll
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Utilities.dll
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Geometry.dll
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.csprojResolveAssemblyReference.cache
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.dll
+C:\Users\Me_hungry\Downloads\UdaTestAddin\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.pdb
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.dll
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.pdb
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.ApplicationFramework.dll
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Database.dll
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Utilities.dll
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Geometry.dll
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.csprojResolveAssemblyReference.cache
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.dll
+C:\Users\Me_hungry\Documents\Visual Studio 2010\Projects\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.pdb
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.dll
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.pdb
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Geometry.dll
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.csprojResolveAssemblyReference.cache
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.dll
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.pdb
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.ApplicationFramework.dll
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Database.dll
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Utilities.dll
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Database.xml
+C:\Users\me_hungry\Documents\Visual Studio 2010\Projects\old_pc\design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Utilities.xml
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.dll
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\UDATestAddin.pdb
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.ApplicationFramework.dll
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Database.dll
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Utilities.dll
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Geometry.dll
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Database.xml
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\bin\Debug\Aveva.Pdms.Utilities.xml
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.dll
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.pdb
+D:\aveva.pdms\Aveva.Design\UdaTestAddin\UDATestAddin\obj\Debug\UDATestAddin.csprojResolveAssemblyReference.cache
