@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Aveva.PDMS.PMLNet;
+
+[assembly: PMLNetCallable()]
+namespace Aveva.Gadgets.uView
+{
+    [PMLNetCallable()]
+    public partial class uView : UserControl
+    {
+        [PMLNetCallable()]
+        public uView()
+        {
+            InitializeComponent();
+            IniView();
+        }
+
+        private void IniView()
+        {
+            webBrowser1.AllowNavigation = true;
+            webBrowser1.Navigate("about:blank");
+            webBrowser1.DocumentText = "<html></html>";
+            webBrowser1.Dock = DockStyle.Fill;
+
+            if (webBrowser1.Document != null)
+                webBrowser1.Document.Write(string.Empty);
+        }
+
+        [PMLNetCallable()]
+        public void Assign(uView that) { }
+
+        [PMLNetCallable()]
+        public void Preview(string fileName, string pageNumber)
+        {
+            int r = 0;
+
+            if (int.TryParse(pageNumber, out r))
+                webBrowser1.Url = new Uri(fileName + "#page=" + pageNumber);
+            else
+                webBrowser1.Url = new Uri(fileName);
+        }
+
+    }
+}

@@ -1,0 +1,685 @@
+------------------------------------------------------------------------
+--
+-- Copyright 1974 to current year. AVEVA Solutions Limited and its subsidiaries. All rights reserved in original code only.
+--
+-- File:            isdpreviewiso.pmlfrm
+--   Type:          Form Definition
+--   Group:
+--     Keyword:     isdPreviewIso
+--   Module:        common
+--   Replaces:
+--
+-- Author:          M.Barlow
+-- Created:         Tue Sep 09 9:27:03 "GMT 2000
+--
+--
+-- Description:
+-- Isometric drawing preview form
+--
+------------------------------------------------------------------------
+--
+-- Methods defined:
+--
+--  Method call                      Return              Description
+--  ===========                      ======              ===========
+--  clear()                          -                   Clear the sheets array
+--  close()                          -                   Close the form and tidy files
+--  enhanceSheet(BOOLEAN)            -                   Enhance the contents of the current sheet
+--  isdPreviewIso()                  -                   Constructor
+--  messages()                       -                   Show the messages form
+--  print(STRING)                    -                   Print the current iso plot file
+--  printSetup()                     -                   Setup the PDMS Plot service
+--  savePlots(STRING)                -                   Save plots
+--  selectSheet()                    -                   Show the selected sheet
+--  setDisplay(ARRAY,ARRAY,STRING)   -                   (called from obj)  Set the initial sheet display and show the first sheet
+--  showPlot(STRING)                 -                   Set plot file in view gadget
+--  showSaveAll()                    -                   Show Save All form
+--  showSaveAs()                     -                   Show Save As form
+--
+------------------------------------------------------------------------
+--setup form !!isdPreviewIso at xr 0 yr 0 resize
+--setup form !!isdPreviewIso document float
+setup form !!isdPreviewIso document
+--setup form !!isdPreviewIso dialog docking right
+Import 'pmlfilebrowser'
+handle any
+endhandle
+using Namespace 'Aveva.Pdms.Presentation'
+
+--#region Start uView
+import 'uView'
+handle any
+endhandle
+using namespace 'Aveva.Gadgets.uView'
+--#endregion
+
+
+  !this.formTitle     = 'Preview Isometric Drawing'
+  !this.iconTitle     = 'IsoPrev'
+  !this.callback      = ''
+  !this.cancelCall    = '!this.close()'
+  !this.formRevision  = ' $Revision: 1.14 $ '
+
+  -- Body of form definition
+--  bar
+--  exit
+
+  menu .viewPopup
+    --add |Reset|      |!this.showPlot(!this.currentPlotFile)|
+    add |Background Colour...| |!!colourSelectLoad('!!isdPreviewIso.plot.background = !!colourSelectGet()', 'Background Colour', !!isdPreviewIso.plot.background)|
+  exit
+
+  -- Icon size from the common control
+  !iconSize = !!comSysOpt.iconSize()
+
+  -- Messages...
+  button .isomessages at x0 y0 tooltip 'Messages...' pixmap width $!iconSize height $!iconSize callback |!this.messages()|
+  -- Save As...
+  --button .isosave     | Save As... |   call |!this.showSaveAs()|
+  button .isosave    at xmax tooltip 'Save As...' pixmap width $!iconSize height $!iconSize callback |!this.showSaveAs()|
+  button .isosaveAll at xmax tooltip 'Save All...' pixmap width $!iconSize height $!iconSize callback |!this.showSaveAll()|
+  -- Print...
+  --button .isoprint    | Print... |   call |!this.print()|
+  button .isoprintSetUp at xmax tooltip 'Print Setup...' pixmap width $!iconSize height $!iconSize callback |!this.printSetup()|
+  button .isoprintPreview at xmax ymin tooltip 'Print Preview...' pixmap width $!iconSize height $!iconSize  callback |!this.print('PREVIEW')|
+  button .isoprint    at xmax tooltip 'Print' pixmap width $!iconSize height $!iconSize callback |!this.print('CURRENT')|
+  button .isoprintAll at xmax tooltip 'Print All' pixmap width $!iconSize height $!iconSize callback |!this.print('ALL')|
+  button .enhance toggle at xmax ymin callback '!this.enhanceSheet(!this.enhance.val)' tooltip 'Highlight On/Off'  pixmap width 16 height 16
+
+  -- Detailed pipes display
+  option .sheets 'Sheets' at xmax+1 ymin call |!this.selectSheet()| width 40
+  --button .isomessages |Messages...| at xmax+1 ymin call |!this.messages()|
+
+  -- Isometric plotview
+  view .plot at x0 ymax+0.2 plot
+    --width 105
+    height 14
+    borders on
+  exit
+  --#region Start uView
+  member .uViewControl is uView
+  !this.uViewControl = object uView()
+  container .uViewFrame PMLNetControl 'View' at xmin.plot ymin.plot anchor all width 105 height 14 
+  !this.uViewFrame.Control = !this.uViewControl.handle()
+  --#endregion
+  -- currently displayed plotfile
+  member .currentPlotFile    is STRING
+  member .messageFile        is STRING
+  member .browser            is PMLFILEBROWSER
+  !this.browser = object PMLFILEBROWSER('save')
+
+exit
+-- End of form definition for !!isdPreviewIso
+------------------------------------------------------------------------
+--
+-- Method:      isdPreviewIso
+--
+-- Description: Constructor
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .isdPreviewIso()
+
+  -- Define Bar Menu
+--  !bar  = !this.bar
+--    !bar.add('Control',       'controlMenu')
+--
+--  -- Control Menu
+--  !menu = !this.newMenu('controlMenu')
+--    !menu.add('CALLBACK', 'Messages...', '!this.messages()')
+--    !menu.add('Toggle', 'Highlight...', '!this.enhanceSheet(!this.controlMenu.selected(|Highlight...|))')
+--    !menu.add('separator')
+--    !menu.add('CALLBACK', 'Save As...', '!this.showSaveAs()')
+--    !menu.add('CALLBACK', 'Save All...', '!this.showSaveAll()')
+-- --    !menu.add('CALLBACK', 'Save All...', |show !!isdSaveAll|
+--    !menu.add('separator')
+--    !menu.add('CALLBACK', 'Print...', '!this.print(|CURRENT|)')
+--    !menu.add('CALLBACK', 'Print All...', '!this.print(|ALL|)')
+-- --    !menu.add('CALLBACK', 'Print Preview...', '!this.print(|PREVIEW|)')
+-- --    !menu.add('CALLBACK', 'Print Setup...', '!this.printSetup()')
+--    !menu.add('separator')
+--    !menu.add('CALLBACK', 'Close',   '!this.close()')
+
+  !this.plot.setPopup(!this.viewPopup)
+  !this.plot.background = 'black'
+  !this.plot.visible = false
+
+  !this.cancelCall = '!this.close()'
+--  !this.controlMenu.select(|Highlight...|, true)
+--  !this.enhance.val = TRUE
+
+  -- Icon size from the common control
+  !iconSize = !!comSysOpt.iconSize()
+  -- Add pixmaps to buttons
+  !this.isomessages.addPixmap(!!pml.getPathName('reports' & !iconSize & '.png'))
+  !this.isosave.addPixmap(!!pml.getPathName('savework' & !iconSize & '.png'))
+  !this.isosaveAll.addPixmap(!!pml.getPathName('saveall' & !iconSize & '.png'))
+  !this.isoprintSetUp.addPixmap(!!pml.getPathName('printsetup' & !iconSize & '.png'))
+  !this.isoprintPreview.addPixmap(!!pml.getPathName('printpreview' & !iconSize & '.png'))
+  !this.isoprint.addPixmap(!!pml.getPathName('print' & !iconSize & '.png'))
+  !this.isoprintAll.addPixmap(!!pml.getPathName('printall' & !iconSize & '.png'))
+  !this.enhance.addPixmap(!!pml.getPathName('enhance' & !iconSize & '.png'), !!pml.getPathName('unenhance' & !iconSize & '.png'))
+
+  !this.enhance.val = TRUE
+
+  -- Tool tips
+  !this.isomessages.setTooltip('View the message file')
+
+endmethod
+-- End of method definition for .isdPreviewIso()
+------------------------------------------------------------------------
+--
+-- Method:      showPlot
+--
+-- Description: Show plot file in view gadget
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+--    1     R    STRING      plot file name
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .showPlot(!plotFile is STRING)
+
+  !this.plot.clear()
+  !this.plot.add(!plotFile)
+  handle any
+    -- e.g. (61,230) Error reading from plotfile
+    exit
+    return error 1 |$!!error.text - Unable to display plot|
+  endhandle
+  --#region fill uView with file
+  !filepath = object FILE (!plotFile.replace('.plt','.pdf'))
+  handle any
+  endhandle 
+ !this.uViewControl.Preview(!filepath.fullname())
+ handle any
+ endhandle
+ --#endregion
+  -- set current plot file name
+  !this.currentPlotFile = !plotFile
+
+endmethod
+-- End of method definition for .showPlot(STRING)
+------------------------------------------------------------------------
+--
+-- Method:      selectSheet
+--
+-- Description: Show the selected sheet
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .selectSheet()
+
+  -- get selected plotfile
+  !this.showPlot( !this.sheets.selection() )
+
+  -- Highlight the 3D design if can
+  --!this.enhanceSheet(!this.controlMenu.selected(|Highlight...|))
+  !this.enhanceSheet(!this.enhance.val)
+  handle ANY
+     -- This will error when in ISODRAFTMODE
+  endhandle
+
+endmethod
+-- End of method definition for .selectSheet()
+------------------------------------------------------------------------
+--
+-- Method:      setDisplay
+--
+-- Description: Set the initial sheet display and show the first sheet
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+--    1    R     ARRAY      displayed sheet names
+--    2    R     ARRAY      returned sheet file names
+--    3    R     STRING     message file name
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .setDisplay(!displayText is ARRAY, !fileList is ARRAY, !messageFilename is STRING)
+
+  !this.clear()
+
+  -- get selected plotfile
+  !this.sheets.dText = !displayText
+  !this.sheets.rText = !fileList
+
+  -- store message file
+  !this.messageFile = !messageFilename
+
+  -- show first plot
+  !this.sheets.clearSelection()
+  !this.selectSheet()
+
+endmethod
+-- End of method definition for .setDisplay(ARRAY,ARRAY,STRING)
+------------------------------------------------------------------------
+--
+-- Method:      clear
+--
+-- Description: Clear the sheets array
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .clear()
+
+  -- Lets delete the files at this time
+  do !i indices !this.sheets.rText
+    !fileToDelete[!i] = object FILE(!this.sheets.rText[!i])
+    !fileToDelete[!i].deleteFile()
+    handle ANY
+      -- $p temp .plt file not deleted from PDMSWK
+    endhandle
+    -- Also delete the hit file
+    !hitFileToDelete[!i] = object FILE(!this.sheets.rText[!i].before('.plt') & '.hit')
+    !hitFileToDelete[!i].deleteFile()
+    handle ANY
+      -- $p temp .hit file not deleted from PDMSWK
+    endhandle
+  enddo
+  -- Also delete the messagefile (Actually this never works because it is open by PDMS)
+  !messageFileToDelete[!i] = object FILE(!this.messageFile)
+  !messageFileToDelete[!i].close()
+  !messageFileToDelete[!i].deleteFile()
+  handle ANY
+    -- $p temp message file not deleted from PDMSWK
+  endhandle
+
+  -- clear sheet selection
+  !this.sheets.clear()
+
+endmethod
+-- End of method definition for .clear()
+------------------------------------------------------------------------
+--
+-- Method:      messages
+--
+-- Description: Show the messages form
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .messages()
+
+  -- Read messages
+  !messFile = !this.messageFile
+  !messageFileObject = object FILE(!this.messageFile)
+  if( not !messageFileObject.exists() ) then
+    !!alert.error(|Cannot find message file | + !messFile)
+  else
+    -- load messages form
+    if( not defined(!!isdPreviewMessages)) then
+      pml load form !!isdPreviewMessages
+    endif
+    !array       = !messageFileObject.readFile()
+    !!isdPreviewMessages.message.dText = !array
+    !!isdPreviewMessages.show()
+  endif
+
+endmethod
+-- End of method definition for .messages()
+
+------------------------------------------------------------------------
+--
+-- Method:      showSaveAll
+--
+-- Description: Show the Save All form
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .showSaveAll()
+
+	!outputFile = !!isdPreviewIso.sheets.selection(|DTEXT|)
+  !outputFile = !outputFile.replace(| |, ||).replace(|/|, ||).replace(|*|, ||).before('Sht') & 'Sht'
+
+  -- Strip off the number after Sht
+
+  !this.browser.show('%PDMSUSER%', !outputFile, 'Save File As', false, 'PDMS Plot Files (*.plt)|*.plt',1)
+  !!isdPreviewIso.savePlots(|ALL|)
+
+endmethod
+-- End of method definition for .showSaveAll()
+------------------------------------------------------------------------
+--
+-- Method:      showSaveAs
+--
+-- Description: Show the Save As form
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .showSaveAs()
+
+  !outputFile = !!isdPreviewIso.sheets.selection(|DTEXT|)
+  !outputFile = !outputFile.replace(| |, ||).replace(|/|, ||).replace(|*|, ||) & '.plt'
+
+  !this.browser.show('%PDMSUSER%', !outputFile, 'Save File As', false, 'PDMS Plot Files (*.plt)|*.plt',1)
+  !!isdPreviewIso.savePlots(|AS|)
+
+endmethod
+-- End of method definition for .showSaveAs()
+------------------------------------------------------------------------
+--
+-- Method:      savePlots
+--
+-- Description: Save plots
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+--    1     R      STRING     ALL or AS where As just saves the current file
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .savePlots(!option is STRING)
+
+--  ** Perhaps the default name should be The dtext and not the rtext **
+
+if (!option eq 'AS') then
+
+  -- Save as what?
+  !file = !this.browser.file()
+  if (!file.unset()) then
+    !!alert.error('No file selection')
+    return
+  endif
+
+  -- What do we want to save?
+  !fileToSave = object FILE(!this.currentPlotFile)
+  -- Check it exists
+  if (!fileToSave.exists().not()) then
+    !!alert.error('File to save does not exist')
+    return
+  endif
+
+  -- Do the actual Save As
+  !newFile = !fileToSave.copy(!file)
+
+  -- Make sure we have a .plt file extension
+  if (!newFile.fullName().substring(-4, 4).lowcase() neq '.plt') then
+    !newFile.move(!newFile.fullName() & '.plt')
+  endif
+
+elseif (!option eq 'ALL') then
+
+  -- Save as what?
+  !file = !!file(!this.browser.file())
+  if (!file.unset()) then
+    !!alert.error('No file selection')
+    return
+  endif
+  !directory = !file.directory()
+
+  -- Use the given filename as a prefix for all the files
+  !prefix = !file.entry()
+
+  do !i indices !!isdPreviewIsometric.rootNameList
+
+    !fileToSave = object FILE(!!isdPreviewIsometric.rootNameList[!i])
+    !file = object FILE(!directory.fullName() & '\' & !prefix & !i.string() & '.plt')
+
+    -- Do the actual Save As
+    !newFile = !fileToSave.copy(!file)
+
+  enddo
+
+endif
+
+endmethod
+-- End of method definition for .savePlots()
+------------------------------------------------------------------------
+--
+-- Method:      printSetup
+--
+-- Description: Setup the PDMS Plot service
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .printSetup()
+
+  -- Write PDMS Plot Service to a temporary file
+  do !i from 1
+    !temporaryFile = object FILE('%PDMSWK%/tempFileToPrintSetup' & !i.string())
+    if (!temporaryFile.exists()) then
+      -- loop around again until we have one that doesn't exist
+    else
+      break
+    endif
+  enddo
+
+  !fileText = ARRAY()
+  -- Write the PDMS Plot Service commands to the temporary Job file
+  !fileText.append(|ClearPrintList|)
+  !fileText.append(|ShowPrintSetup|)
+  !fileText.append(|EndJobAndDelete|)
+
+  -- Write the files to print to a temporary file
+  !temporaryFile.writeFile('OVERWRITE', !fileText)
+  !temporaryFile.close()
+
+  -- So let us run the PDMS Plot Service job
+  -- + Just view the job ??????????????? only for developer
+  -- syscom 'PlotServCmd startLog'
+  syscom 'PlotServCmd Job $!temporaryFile'
+
+endmethod
+-- End of method definition for .printSetup()
+------------------------------------------------------------------------
+--
+-- Method:      print
+--
+-- Description: Print the current iso plot file
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+--    1    R     STRING      Key word CURRENT or ALL
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .print(!option is STRING)
+
+    -- What may we want to print 1. The current file
+    !fileToPrint = object FILE(!this.currentPlotFile)
+    -- Check it exists
+    if (!fileToPrint.exists().not()) then
+      !!alert.error('File to print not exist')
+      return
+    endif
+    -- What may we want to print All. The full list of sheets (Pass as an array?) or s
+    !arrayToPrint = !!isdPreviewIsometric.plotFileList
+    do !i indices !arrayToPrint
+      !fileArrayToPrint[!i] = object FILE(!arrayToPrint[!i].after('/'))
+      -- Check it exists
+      if (!fileArrayToPrint[!i].exists()) then
+        !fileArrayToPrintName[!i] = !fileArrayToPrint[!i].fullName()
+      else
+        -- Are we bothered?
+      endif
+
+      -- Check if this is the current sheet
+      if (!fileArrayToPrint[!i].fullName() eq !fileToPrint.fullName()) then
+        -- This is the current sheet
+        !currentSheetNumber = !i
+      endif
+    enddo
+
+  -- Write PDMS Plot Service to a temporary file
+  do !i from 1
+    !temporaryFile = object FILE('%PDMSWK%/tempFileToPrint' & !i.string())
+    if (!temporaryFile.exists()) then
+      -- loop around again until we have one that doesn't exist
+    else
+      break
+    endif
+  enddo
+
+  !fileText = ARRAY()
+  -- Write the PDMS Plot Service commands at the top of the temporary Job file
+  if (!option neq 'PREVIEW') then
+    !fileText.append(|ShowPrintSetupOnce|)
+  endif
+  !fileText.append(|ClearPrintList|)
+
+  if (!option eq 'CURRENT' or !option eq 'PREVIEW') then
+    -- OK the file name we want to print is !fileArrayToPrint[!currentSheetNumber].fullName()
+    !fileText.append(|AddPlotFile "| & !fileArrayToPrint[!currentSheetNumber].fullName() & |"|)
+  else
+    do !i indices !arrayToPrint
+      !fileText.append(|AddPlotFile "| & !fileArrayToPrintName[!i] & |"|)
+    enddo
+  endif
+
+  -- Write the PDMS Plot Service commands at the end of the temporary Job file
+  if (!option eq 'PREVIEW') then
+    !fileText.append(|Preview|)
+  else
+    !fileText.append(|PrintListAndClear|)
+  endif
+  !fileText.append(|EndJobAndDelete|)
+
+  -- Write the files to print to a temporary file
+  !temporaryFile.writeFile('OVERWRITE', !fileText)
+  !temporaryFile.close()
+
+  -- So let us run the PDMS Plot Service job
+  -- + Just view the job ??????????????? only for developer
+  -- syscom 'PlotServCmd startLog'
+  syscom 'PlotServCmd Job $!temporaryFile'
+
+endmethod
+-- End of method definition for .print()
+------------------------------------------------------------------------
+--
+-- Method:      close
+--
+-- Description: Close
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .close()
+
+  -- Delete a temporary file Not done here now because PlotServ will delete when job complete
+  --  !temporaryFile = object FILE('%PDMSWK%/tempFileToPrint')
+  --  !temporaryFile.deleteFile()
+
+  -- Delete plotfiles and message files
+  !this.clear()
+
+  -- Hide the form
+  !this.hide()
+
+  -- Un-enhance the 3D graphics
+  !this.enhanceSheet(false)
+
+  -- Clear the plot
+  !this.plot.clear()
+
+endmethod
+-- End of method definition for .close()
+------------------------------------------------------------------------
+--
+-- Method:      enhanceSheet
+--
+-- Description: enhance the contents of the current sheet
+--
+-- Method Type: Function/Procedure
+-- Arguments:
+--   [#] [R/RW] [Data Type] [Description]
+--    1     R    BOOLEAN     enhance on or off
+-- Return:
+--   [Data Type] [Description]
+--
+------------------------------------------------------------------------
+define method .enhanceSheet(!option is BOOLEAN)
+
+  unenhance all
+  if (!option.not()) then
+    return
+  endif
+
+  !currentHitFile = !this.currentPlotFile.before('.plt') & '.hit'
+  handle ANY
+    -- It could be that the attempt to do an isometric fails
+    return
+  endhandle
+  !hitFile = object FILE(!currentHitFile)
+
+  if (!hitFile.exists()) then
+    -- OK that's good we need to read it to get the elements to enhance
+    !lines = !hitFile.readFile()
+    do !i indices !lines
+      -- Get the element
+      !element = !lines[!i].part(3)
+      -- Add element
+      !addElement = 'add ' & !element
+      $!addElement
+      handle ANY
+      endhandle
+      -- Enhance the element
+      !command[!i] = 'enhance ' & !element & ' colour ' & !!gphColOpt.highlight.code.string()
+      $!command[$!i]
+      -- Enhance the arrive tube of the element
+      !arriveTubeCommand = 'enhance ia tube of ' & !element & ' colour ' & !!gphColOpt.highlight.code.string()
+      $!arriveTubeCommand
+      handle ANY
+      endhandle
+      -- Enhance the arrive tube of the element
+      !leaveTubeCommand = 'enhance il tube of ' & !element & ' colour ' & !!gphColOpt.highlight.code.string()
+      $!leaveTubeCommand
+      handle ANY
+      endhandle
+    enddo
+
+  else
+    -- Cannot enhance because we cannot get to the hit file
+    -- To create a hit file the options file needs HYPERPLANT ON
+  endif
+
+endmethod
+-- End of method definition for .enhanceSheet()

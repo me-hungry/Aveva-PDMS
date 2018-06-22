@@ -1,0 +1,17 @@
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\uLable.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\uLable.pdb
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Aveva.ApplicationFramework.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Aveva.ApplicationFramework.Presentation.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Aveva.Pdms.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Aveva.Pdms.Utilities.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\PMLNet.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Infragistics.Win.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\ForeignLanguage.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Infragistics.Shared.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Aveva.Pdms.xml
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\bin\Debug\Aveva.Pdms.Utilities.xml
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\obj\Debug\uLable.csprojResolveAssemblyReference.cache
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\obj\Debug\uLable.userControlLabel.resources
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\obj\Debug\uLable.csproj.GenerateResource.Cache
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\obj\Debug\uLable.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uLable1214\uLable\obj\Debug\uLable.pdb

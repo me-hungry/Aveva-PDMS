@@ -1,0 +1,76 @@
+--------------------------------------------------------------
+setup form !!uFitlerSelection resize
+title |Filter Selection|
+   import 'uGrid'
+   handle any
+   endhandle
+   using namespace 'Aveva.Gadgets.uGrid'
+
+ 
+ member .memberGrid is userGrid
+  !this.memberGrid = object userGrid()
+  container .containerGrid PMLNetControl anchor left+top+bottom  width 30 height 10 
+  !this.containerGrid.Control = !this.memberGrid.handle()
+
+button .buttonAply 'Aply' at xmin.containerGrid ymax.containerGrid anchor left+bottom callback '!this.Filter()' width 3.2 height 0.92  
+ exit
+define method .uFitlerSelection()
+!this.FillGrid()
+
+endmethod
+------------------------------------------------------------------------
+--
+-- Method:     FillGrid
+--
+-- Description: 
+--
+------------------------------------------------------------------------
+define method .FillGrid()
+
+!graSelL = !this.SelectionMeth()
+
+!types = !graSelL.EVALUATE(OBJECT BLOCK('!graSelL[!EVALINDEX].type'))
+!types.unique()
+!this.memberGrid.clear()
+do !var values !types
+ !this.memberGrid.addtype(!var)
+enddo 
+endmethod
+------------------------------------------------------------------------
+--
+-- Method:     Filter
+--
+-- Description: 
+--
+------------------------------------------------------------------------
+define method .Filter()
+
+!filtered = array()
+do !type values !!uFitlerSelection.memberGrid.GetSelectedType()
+ !filtered.append(!type)
+enddo 	
+
+do !selType values !this.SelectionMeth()
+if(!filtered.find(!selType.type).size() eq 0)then
+ rem only $!selType
+endif	
+enddo 
+kill !!uFitlerSelection
+-- !this.FillGrid()
+
+endmethod
+------------------------------------------------------------------------
+--
+-- Method:     SelectionMeth
+--
+-- Description: 
+--
+------------------------------------------------------------------------
+define method .SelectionMeth() is ARRAY
+!graSel           = object SELECTION()
+!graSel.getCurrent()
+!graSelL          = !graSel.getSelection()
+
+return !graSelL 
+endmethod
+

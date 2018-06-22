@@ -1,0 +1,15 @@
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\obj\Debug\uGrid.csprojResolveAssemblyReference.cache
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\obj\Debug\Aveva.Gadgets.uGrid.userGrid.resources
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\obj\Debug\uGrid.csproj.GenerateResource.Cache
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\uGrid.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\uGrid.pdb
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\Aveva.ApplicationFramework.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\Aveva.ApplicationFramework.Presentation.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\Aveva.Pdms.Utilities.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\PMLNet.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\Infragistics.Win.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\ForeignLanguage.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\Infragistics.Shared.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\bin\Debug\Aveva.Pdms.Utilities.xml
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\obj\Debug\uGrid.dll
+C:\Users\SuperFantom\Documents\aveva.pdms\Aveva.Design\uGrid\uLabel\obj\Debug\uGrid.pdb

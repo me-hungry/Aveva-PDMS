@@ -1,0 +1,30 @@
+﻿--#region uPML Form Designer generated code 
+--#region Form definition 
+setup form !!uViewForm size 39 13 resize
+
+   import 'uView'
+   handle any
+   endhandle
+   using namespace 'Aveva.Gadgets.uView'
+ 
+--#region Gadgets
+
+ member .uViewControl is uView
+ !this.uViewControl = object uView()
+ container .uViewFrame PMLNetControl 'View' dock fill width 20 height 12 
+ !this.uViewFrame.Control = !this.uViewControl.handle()
+
+ button .button1 'button1' anchor bottom + left at xmin.uViewFrame ymax.uViewFrame callback '!this.previ()'  width 8 height 2  
+
+--#endregion Gadgets
+exit 
+--#endregion Form definition 
+ 
+--#region Methods 
+
+define method .previ()
+!this.uViewControl.Preview('c:\Users\SuperFantom\Downloads\Works.pdf','1')
+endmethod
+	
+--#endregion Methods 
+--#endregion uPML Form Designer generated code 
