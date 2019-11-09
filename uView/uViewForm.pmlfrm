@@ -1,6 +1,6 @@
 ﻿--#region uPML Form Designer generated code 
 --#region Form definition 
-setup form !!uViewForm size 39 13 resize
+setup form !!uViewForm size 41 13 resize
 
    import 'uView'
    handle any
@@ -11,10 +11,11 @@ setup form !!uViewForm size 39 13 resize
 
  member .uViewControl is uView
  !this.uViewControl = object uView()
- container .uViewFrame PMLNetControl 'View' dock fill width 20 height 12 
+ container .uViewFrame PMLNetControl 'View' anchor all width 40 height 10 
  !this.uViewFrame.Control = !this.uViewControl.handle()
 
  button .button1 'button1' anchor bottom + left at xmin.uViewFrame ymax.uViewFrame callback '!this.previ()'  width 8 height 2  
+ button .button2 'button2' anchor bottom + left at xmin.button1 ymax.button1 callback '!this.previSVG()'  width 8 height 2  
 
 --#endregion Gadgets
 exit 
@@ -23,8 +24,11 @@ exit
 --#region Methods 
 
 define method .previ()
-!this.uViewControl.Preview('c:\Users\SuperFantom\Downloads\Works.pdf','1')
+!this.uViewControl.Preview('c:\a.pdf','1')
 endmethod
-	
+
+define method .previSVG()
+!this.uViewControl.PreviewSVG('c:\b.svg')
+endmethod
 --#endregion Methods 
 --#endregion uPML Form Designer generated code 
