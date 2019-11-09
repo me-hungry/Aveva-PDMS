@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Aveva.PDMS.PMLNet;
+using System.IO;
 
 [assembly: PMLNetCallable()]
 namespace Aveva.Gadgets.uView
@@ -14,6 +15,9 @@ namespace Aveva.Gadgets.uView
     [PMLNetCallable()]
     public partial class uView : UserControl
     {
+        private string docContetnt = "<html></html>";
+        private string docContetnt1 = "<meta http-equiv='X-UA-Compatible' content='IE=10' /><html>";
+        private string docContetnt2 = "</html>";
         [PMLNetCallable()]
         public uView()
         {
@@ -25,7 +29,7 @@ namespace Aveva.Gadgets.uView
         {
             webBrowser1.AllowNavigation = true;
             webBrowser1.Navigate("about:blank");
-            webBrowser1.DocumentText = "<html></html>";
+            webBrowser1.DocumentText = docContetnt;
             webBrowser1.Dock = DockStyle.Fill;
 
             if (webBrowser1.Document != null)
@@ -46,5 +50,11 @@ namespace Aveva.Gadgets.uView
                 webBrowser1.Url = new Uri(fileName);
         }
 
+        [PMLNetCallable()]
+        public void PreviewSVG(string fileName)
+        {
+            string fileContent = File.ReadAllText(fileName);
+            webBrowser1.DocumentText = docContetnt1 + fileContent + docContetnt2;
+        }
     }
 }
