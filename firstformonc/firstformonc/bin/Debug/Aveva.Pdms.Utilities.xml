@@ -1,0 +1,942 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aveva.Pdms.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Aveva.Pdms.Utilities.CommandLine.Command">
+            <summary>
+            Interface to PDMS command line and PML variables.  AVEVA USE ONLY.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.CreateCommand(System.String)">
+            <summary>
+            Create a PDMS command.
+            </summary>
+            <param name="commandString">Command text</param>
+            <returns>Command object</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.Update">
+            <summary>
+            Update forms to reflect changes made.
+            The database changes event will be fired at this point. 
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.FormRefresh">
+            <summary>
+            Refresh PML forms
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.GetPMLVariableBoolean(System.String)">
+            <summary>
+            Get value of PML boolean variable
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.GetPMLVariableReal(System.String)">
+            <summary>
+            Get value of PML floating point variable
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.GetPMLVariableString(System.String)">
+            <summary>
+            Get value of PML string variable
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.Queue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.Run">
+            <summary>
+            Invoke Command in nested scope
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.RunInPdms">
+            <summary>
+            Invoke command in nested scope outputting error in PDMS rather than returning error
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.RunInCurrentScope">
+            <summary>
+            Invoke Command in current scope
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.CommandLine.Command.RunInCurrentScopeInPdms">
+            <summary>
+            Invoke command in current scope outputting error in PDMS rather than returning error
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.CommandLine.Command.CommandString">
+            <summary>
+            Command text
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.CommandLine.Command.Error">
+            <summary>
+            Error that occurred as a result of invoking command
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.CommandLine.Command.Result">
+            <summary>
+            Result of command, as would be output on the command line.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Messaging.IMessage">
+            <summary>
+            Interface IMessage.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.IMessage.PassObjectToCPP(System.Int32,Aveva.Pdms.Utilities.Messaging.PdmsMessage)">
+            <summary>
+            Pass object through to C++.
+            </summary>
+            <param name="pos">Position index ??</param>
+            <param name="message">Associated message</param>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Messaging.PdmsException">
+            <summary>
+            Exception handling class. All PDMS exceptions should throw a PdmsException object.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsException.ToString">
+            <summary>
+            Convert to string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsException.Output">
+            <summary>
+            Output Error associated with exception
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.Messaging.PdmsException.Error">
+            <summary>
+            error associated with exception
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Messaging.PdmsMessage">
+            <summary>
+            PDMS application message. Every message is identified by a module number and message number.
+            The messages are defined in separate message files.
+            Each nessage may have a nimber of substitutions denoted by '$x' in the message.
+            These substitutions are filled at run time.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.CreateMessage(System.Int32,System.Int32)">
+            <summary>
+            Creates a PDMS message.
+            </summary>
+            <param name="module"></param>
+            <param name="messagenum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.Output(Aveva.Pdms.Utilities.Messaging.PdmsMessage[])">
+            <summary>
+            Output a list of messages, filling in any substitutions
+            </summary>
+            <param name="messages"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.AddElementDelegate(Aveva.Pdms.Utilities.Messaging.MessageConvert)">
+            <summary>
+            Add in delegate to cope with Elements- AVEVA USE ONLY.
+            </summary>
+            <param name="dele"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.AddHashDelegate(Aveva.Pdms.Utilities.Messaging.MessageConvert)">
+            <summary>
+            Add in delegate to cope with attributes, nouns- AVEVA USE ONLY.
+            </summary>
+            <param name="dele"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.OutputError">
+            <summary>
+            Output message as an error, filling in any substitutions.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.Output">
+            <summary>
+            Output a message to the current Rio_StreamManager
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.Output(System.String)">
+            <summary>
+            Output a message to a named Rio_StreamManager
+            Standard PDMS RioStreams are:
+            "REQUESTSTREAM",
+            "COMMANDSTREAM",
+            "DEBUGSTREAM",
+            "REPORTSTREAM",
+            "FILESTREAM"
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.MessageText">
+            <summary>
+            Obtains message text, filling in any substitutions.
+            </summary>
+            <returns>message text</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.SetInt(System.Int32,System.Int32)">
+            <summary>
+            Set integer substitutions.
+            </summary>
+            <param name="pos">substitution number</param>
+            <param name="val">integer value</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.SetDouble(System.Int32,System.Double)">
+            <summary>
+            Set real substitutions.
+            </summary>
+            <param name="pos">substitution number</param>
+            <param name="val">double value</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.SetName(System.Int32,System.Object)">
+            <summary>
+            Set text substitutions.
+            </summary>
+            <param name="pos">substitution number</param>
+            <param name="val">object, yielding text</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.SetElement(System.Int32,Aveva.Pdms.Utilities.Messaging.IMessage)">
+            <summary>
+            Set Element substitutions.
+            </summary>
+            <param name="pos">substitution number</param>
+            <param name="ele">element</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.SetHash(System.Int32,Aveva.Pdms.Utilities.Messaging.IMessage)">
+            <summary>
+            Set attribute or element type substitutions.
+            </summary>
+            <param name="pos">substitution number</param>
+            <param name="att">attribute or element type</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.GetInt(System.Int32)">
+            <summary>
+            Get integer substitution.
+            </summary>
+            <param name="pos">substitution number</param>
+            <returns>integer value</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.GetDouble(System.Int32)">
+            <summary>
+            Get real substitution.
+            </summary>
+            <param name="pos">substitution number</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.GetName(System.Int32)">
+            <summary>
+            Get text substitution.
+            </summary>
+            <param name="pos">substitution number</param>
+            <returns>text value</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.GetElement(System.Int32)">
+            <summary>
+            Get Element substitution.
+            </summary>
+            <param name="pos">substitution number</param>
+            <returns>element</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.GetHash(System.Int32)">
+            <summary>
+            Get attribute or element type substitution.
+            </summary>
+            <param name="pos">substitution number</param>
+            <returns>attribute / element type</returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.EmbedMessage(Aveva.Pdms.Utilities.Messaging.PdmsMessage)">
+            <summary>
+            Embed a message within this message.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.EmbedMessages(Aveva.Pdms.Utilities.Messaging.PdmsMessage[])">
+            <summary>
+            Embed a list of messages within this message.
+            </summary>
+            <param name="messages"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.RetrieveEmbeddedMessages">
+            <summary>
+            Retrieve embedded messages.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.Reset">
+            <summary>
+            Unset all substitutions and  remove embedded messages.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.ResetErrorOccurred">
+            <summary>
+            AVEVA USE ONLY
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.SaveLastError(System.Boolean)">
+            <summary>
+            AVEVA USE ONLY
+            </summary>
+            <param name="save"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.GetLastError">
+            <summary>
+            AVEVA USE ONLY
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Messaging.PdmsMessage.FlushPmlErrors">
+            <summary>
+            AVEVA USE ONLY
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.Messaging.PdmsMessage.ModuleNumber">
+            <summary>
+            module number for message.
+            </summary>
+            <returns>module number</returns>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.Messaging.PdmsMessage.MessageNumber">
+            <summary>
+            message number.
+            </summary>
+            <returns>message number</returns>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.StringUtilities.Hash">
+            <summary>
+            Provides access to hash and dehash methods
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.StringUtilities.Hash.CreateHash">
+            <summary>
+            Create a PDMS Hash command.
+            </summary>
+            <returns>Hash object</returns>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Tracing.TraceNumber">
+            <summary>
+            Trace Number enumeration.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ACTION">
+            <summary>
+            Trace actions, as now
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ACTIONLAYER">
+            <summary>
+            Trace ACTIONLAYER entry and exit 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ADMIN_DETAIL">
+            <summary>
+            Additional trace information in Admin
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ADMIN_GTIGS">
+            <summary>
+            Information about GTIGS use in Admin
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ADMIN_RCF">
+            <summary>
+            Integrity checking in RCF1
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_APPLICATION">
+            <summary>
+            Trace Application entry and exit
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ATTLIB">
+            <summary>
+            DBLAYER/ATTLIB tracing
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_BASICLAYER">
+            <summary>
+             Trace BASICLAYER entry and exit
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_BOXLIB">
+            <summary>
+            entry and exit trace in BOXLIB
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_BRW">
+            <summary>
+            Binary read/write routines BASICLAYER/BRW
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CACHELAYER_ADDITIONAL">
+            <summary>
+            additional tracing in CACHELAYER
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CACHELAYER_STEELWORK">
+            <summary>
+            steelwork tracing in CACHELAYER
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CLASHLAYER">
+            <summary>
+            Clash layer tracing
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CLASHLAYER_MORE">
+            <summary>
+            Clash layer tracing
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CLASHLAYER_REPORT">
+            <summary>
+            Clash layer tracing
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CMPLIB_EXTRA">
+            <summary>
+            Comparator additional output
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_COPYLIB">
+            <summary>
+             BASICLAYER data copying routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_CVLIB_EXTRA">
+            <summary>
+            Comparator additional output
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DABACON">
+            <summary>
+            Trace DABACON routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DABERR_TRACEBACK">
+            <summary>
+            Output traceback on DABACON errors
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DB_INTEGRITY">
+            <summary>
+            Database integrity checking in Admin
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DB_OPEN">
+            <summary>
+            Show information on database opening if >2
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DBLAYER">
+            <summary>
+            Trace DBLAYER entry and exit
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DEFAULT">
+            <summary>
+            Default trace flag for the trace system
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DESIGN_FORCE_GML">
+            <summary>
+            force use of GML even for non-holy primitives 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DESIGN_RECONNECT">
+            <summary>
+            trace reconnection of entities
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DESIGN_SPECIALS">
+            <summary>
+            Design special cases
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DRAFT_AUTOTEXT">
+            <summary>
+            Draft automatic text system
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_DRAFT_PICTURE">
+            <summary>
+            Trace Draft Picture file creation
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_EVENTLAYER">
+            <summary>
+            EVENTLAYER - graphical interaction
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_EXIT">
+            <summary>
+            Trace exit from routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_EXPRLIB_REINIT">
+            <summary>
+            re-initialise EXPRLIB at start of each expression 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_FECS">
+            <summary>
+            FECS conversion routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_FILEHANDLING">
+            <summary>
+            Low level File handling
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_FIXACTIONS">
+            <summary>
+            Escape route for ham fisted program testers 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_FLEXLM">
+            <summary>
+            calls to FLEXLM routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_FM">
+            <summary>
+             Forms and menus trace flag
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_FUNCLAYER">
+            <summary>
+            Trace FUNCLAYER entry and exit
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_INTLAYER">
+            <summary>
+            INTLAYER - forms &amp; menus syntax
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ISODRAW">
+            <summary>
+            ISODRAW Trace flags
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ISOLAYER">
+            <summary>
+            ISOLAYER tracing
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ISOLAYER_UTIL">
+            <summary>
+            ISOLAYER utilities
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_MAP">
+            <summary>
+            map maintenance
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_MATHLIB">
+            <summary>
+            BASICLAYER MATHLIB routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_MDB_COPY">
+            <summary>
+            Copying of databases in MDBLIB
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_MEMORY_CHECK">
+            <summary>
+            Checks memory in CHKSTK
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_MESSAGE">
+            <summary>
+            Message system
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_MODULE_SWITCH">
+            <summary>
+            Module switching trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_NESTED_TMPL">
+            <summary>
+            Allow nested templates in Design
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_NOUNLIB">
+            <summary>
+            DBLAYER/NOUNLIB trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_NXLIB">
+            <summary>
+            NXLIB trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PADDLAYER">
+            <summary>
+            Control PADDLAYER output
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PADDLAYER_CHANGEADC">
+            <summary>
+            PADDLAYER/CHANGEADC_SRC
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PADDLAYER_DIMENSIONS">
+            <summary>
+            Tracing of PADDLAYER dimensions 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PADDLAYER_IDS">
+            <summary>
+            display ids
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PADDLAYER_VIEWS">
+            <summary>
+            View updating
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PART_NUMBER">
+            <summary>
+            Design part numbering trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_PML">
+            <summary>
+            PML
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_RESTRICTED">
+            <summary>
+            Restricted syntax enable flag 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_ROUTER">
+            <summary>
+            ROUTER trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SELECT">
+            <summary>
+            selection tracing
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SELECT_EXPR">
+            <summary>
+            Print selection expression
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SGL">
+            <summary>
+            SGL
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SHOW_BOXLIB">
+            <summary>
+            output box limits from BOXLIB/DBBOXLIB
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SHOW_EXPRESSION">
+            <summary>
+            show expression stack before execution
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SHOW_MAPLIB">
+            <summary>
+            Parameters in Spatial map routines
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SHOW_UDA">
+            <summary>
+            UDA system trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SPATIAL_MAP_INSTANCE">
+            <summary>
+            item being mapped
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SPOOL_NUMBER">
+            <summary>
+            Design spool numbering trace
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SPOOLER">
+            <summary>
+            Module SPOOLER
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_SYSTEM_DB">
+            <summary>
+            Show information on system database if >1
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Tracing.TraceNumber.TRACE_WIGWAM_WARN_NOIGNORE">
+            <summary>
+            Do not ignore Wigwam warnings
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Tracing.PdmsTrace">
+            <summary>
+            PDMS application tracing control. 
+            This class includes facilities to output trace statements, monitor CPU, and retrieving the
+            current trace entry stack.
+            Trace entry/exit is done via the TraceEntry class. 
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.GetTraceback(System.Boolean)">
+            <summary>
+            Get current stack of trace entries
+            </summary>
+            <param name="outputToConsole">Output or not</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.GetTraceFlag(Aveva.Pdms.Utilities.Tracing.TraceNumber)">
+            <summary>
+            Get value of specified trace flag
+            </summary>
+            <param name="traceNumber">trace number</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.SetTraceFlag(Aveva.Pdms.Utilities.Tracing.TraceNumber,System.Int32)">
+            <summary>
+            Set value of specified trace flag
+            </summary>
+            <param name="traceNumber">trace number</param>
+            <param name="value">new value to set trace number to</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.StartCPUTrace">
+            <summary>
+            Turn on CPU recording (suppressing trace output)
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.StopCPUTrace(System.Boolean)">
+            <summary>
+            Turn off CPU recording, outputting results.
+            Standard trace output will be reactivated.
+            </summary>
+            <param name="outputToConsole">output or not</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.TestFlag(Aveva.Pdms.Utilities.Tracing.TraceNumber)">
+            <summary>
+            Test if trace flag is non zero
+            </summary>
+            <param name="traceNumber">trace number</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.TestFlagBit(Aveva.Pdms.Utilities.Tracing.TraceNumber,System.Int32)">
+            <summary>
+            Test if bit value for trace flag is set.
+            </summary>
+            <param name="traceNumber">trace number</param>
+            <param name="bit">bit number</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.Trace(System.Collections.ArrayList)">
+            <summary>
+            Output values as trace converting via 'ToString'.
+            Trace output should always be conditional on a trace flag value.
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.Trace(System.Object)">
+            <summary>
+            Output value as trace converting via 'ToString'.
+            Trace output should always be conditional on a trace flag value.
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.PdmsTrace.Trace(System.String)">
+            <summary>
+            Output string as trace.
+            Trace output should always be conditional on a trace flag value.
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.Tracing.PdmsTrace.CPUTraceStarted">
+            <summary>
+            Indicates if CPU monitoring is on or not
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.Tracing.PdmsTrace.Enabled">
+            <summary>
+            Enable or disable tracing
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Utilities.Tracing.PdmsTrace.TraceLog">
+            <summary>
+            Log file for trace.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Tracing.TraceEntry">
+            <summary>
+            Class to do subroutine entry and exit trace.
+            The object should be created on the first line off a method.
+            The Dispose method must be called(implicitly or explicitly) on method exit.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Tracing.TraceEntry.Enter(System.String,Aveva.Pdms.Utilities.Tracing.TraceNumber)">
+            <summary>
+            Create trace entry object.
+            </summary>
+            <param name="routineName">name to be output</param>
+            <param name="traceNumber">trace number to test against before outputting entry trace </param>
+            <returns></returns>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Undo.UndoCaretaker">
+            <summary>
+            This class registers any UndoSubscribers
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoCaretaker.RegisterUndoSubscriber(Aveva.Pdms.Utilities.Undo.UndoSubscriber)">
+            <summary>
+            Register a subscriber
+            </summary>
+            <param name="subscriber">subscriber instance</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoCaretaker.RemoveUndoSubscriber(Aveva.Pdms.Utilities.Undo.UndoSubscriber)">
+            <summary>
+            Remove a subscriber
+            </summary>
+            <param name="subscriber">subscriber instance</param>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoCaretaker.ClearAllTransactions">
+            <summary>
+            Clear all Undo Transactions as they are no longer valid
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoCaretaker.SignificantEventAboutToHappen">
+            <summary>
+            Signal that a Significant Event is about to happen. The consequences of this are:
+            a) Clears the redo stack
+            b) Starts a transaction if not already started.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoCaretaker.#ctor">
+            <summary>
+            Protected constructor as there is a single public static method
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Undo.UndoCaretaker.internalUndoCaretaker">
+            <summary>
+            Singleton factory instance
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoCaretaker.internalRegisterUndoSubscriber(Aveva.Pdms.Utilities.Undo.UndoSubscriber)">
+            <summary>
+            Internal methods
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Undo.UndoSubscriber">
+            <summary>
+            The UndoSubscriber class is the base class for components that participate in the undo system.
+            To particpate in the undo system, a new class must be derived from UndoSubscriber.
+            An instance of the class must then be registered in the system via the UndoCaretaker class. 
+            For each instance registered, the methods will be invoked as follows:
+            <para>   For a start transaction- GetStartState() will be invoked. </para>
+            <para>   For a end transaction- GetEndState() will be invoked. </para>
+            <para>   For a undo- RestoreStartState() will be invoked.</para>
+            <para>   For a redo- RestoreEndState() will be invoked.</para>
+            The states returned by GetStartState, GetEndState will be managed by the undo system
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoSubscriber.GetBeginState">
+            <summary>
+            GetStartState() will be called on start transaction. 
+            It should return the current state.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoSubscriber.GetEndState">
+            <summary>
+            GetStartState() will be called on end transaction. 
+            It should return the current state.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoSubscriber.RestoreBeginState(System.Object)">
+            <summary>
+            RestoreStartState() will be called on undo of that transaction. 
+            It should restore the passed state.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoSubscriber.RestoreEndState(System.Object)">
+            <summary>
+            RestoreEndState() will be called on undo of that transaction. 
+            It should restore the passed state.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Undo.UndoTransaction">
+            <summary>
+            This class is used to:
+             a) Start and end an UndoTransaction transaction
+             b) Static method to Clear all transactions
+             c) Static method to denote that a significant event is about to happen
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.GetUndoTransaction">
+            <summary>
+            Get Transaction Object
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.StartTransaction(System.String)">
+            <summary>
+            Start an Undo Transaction
+            Any existing transaction will be ended
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.EndTransaction">
+            <summary>
+            End an Undo Transaction
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.PerformUndo">
+            <summary>
+            Do Undo
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.PerformRedo">
+            <summary>
+            Do Redo
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.#ctor">
+            <summary>
+            Protected constructor 
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Utilities.Undo.UndoTransaction.internalUndoTransaction">
+            <summary>
+            Singleton factory instance
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Undo.UndoTransaction.internalGetTransaction">
+            <summary>
+            Internal methods
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Utilities.Units.Bore">
+            <summary>
+            Provides access to Nominal Bore methods.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Utilities.Units.Bore.CreateBore">
+            <summary>
+            Create a PDMS Bore command.
+            </summary>
+            <returns>Bore object</returns>
+        </member>
+    </members>
+</doc>

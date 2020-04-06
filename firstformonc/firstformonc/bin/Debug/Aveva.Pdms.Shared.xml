@@ -1,0 +1,548 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aveva.Pdms.Shared</name>
+    </assembly>
+    <members>
+        <member name="T:Aveva.Pdms.Shared.Clipboard">
+            <summary>
+            Summary description for Clipboard.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.CurrentElementChangedEventHandler">
+            <summary>
+            Current Element Changed event handler delegate.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.CurrentElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.CurrentElement.RaiseCurrentElementChanged(System.Object,Aveva.Pdms.Shared.CurrentElementChangedEventArgs)">
+            <summary>
+            Raise the Current Element Changed event.
+            </summary>
+            <param name="sender">Object raising the event</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="E:Aveva.Pdms.Shared.CurrentElement.CurrentElementChanged">
+            <summary>
+            Current Element Changed event.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.CurrentElement.Element">
+            <summary>
+            Current Element (CE).
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.CurrentElementChangedEventArgs">
+            <summary>
+            Event arguments for Current Element Changed event.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.CurrentElementChangedEventArgs.#ctor(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="ele">Element to associate with event</param>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.CurrentElementChangedEventArgs.Element">
+            <summary>
+            Element associated with event.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.InputBeginEventHandler">
+            <summary>
+            INPUT BEGIN event handler delegate.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.InputEndEventHandler">
+            <summary>
+            INPUT END event handler delegate.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.InputAbortEventHandler">
+            <summary>
+            INPUT ABORT event handler delegate.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.DatalListing">
+            <summary>
+            Summary description for DatalListing.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Shared.DatalListing.Instance">
+            <summary>
+            Instance of Abstract class
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.ShowOptionsForm">
+            <summary>
+            Show Options Form
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.OutputListing">
+            <summary>
+            Output Datal to File and screen
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.inputBegin">
+            <summary>
+            Special case input begin
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.inputEnd(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            Special case input end
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.inputAbort">
+            <summary>
+            Special case input abort
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.RaiseInputBegin(System.Object,Aveva.Pdms.Shared.DatalListingEventArgs)">
+            <summary>
+            Raise the INPUT BEGIN event.
+            </summary>
+            <param name="sender">Object raising the event</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.RaiseInputEnd(System.Object,Aveva.Pdms.Shared.DatalListingEventArgs)">
+            <summary>
+            Raise the INPUT BEGIN event.
+            </summary>
+            <param name="sender">Object raising the event</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListing.RaiseInputAbort(System.Object,Aveva.Pdms.Shared.DatalListingEventArgs)">
+            <summary>
+            Raise the INPUT ABORT event.
+            </summary>
+            <param name="sender">Object raising the event</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.fileName">
+            <summary>
+            Optional filename for output
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.Elements">
+            <summary>
+            Array of DB Elements
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.screen">
+            <summary>
+            True for screen output, default false
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.changes">
+            <summary>
+            True for Output Changes only (default false)
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.session">
+            <summary>
+            Session to compare with
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.ReplaceInTarget">
+            <summary>
+            If True, Output will Replace element of same name in Target db (default false)
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.LocateParentInTarget">
+            <summary>
+            If True, Output will create data under same named Parent element in Target db (default false)
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.brief">
+            <summary>
+            Brief output, only name/type/refno
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.pass">
+            <summary>
+            Pass required
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.sameref">
+            <summary>
+            'Same reference' mode
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.tab">
+            <summary>
+            Tab size (0=untabbed)
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.comments">
+            <summary>
+            Comments
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.index">
+            <summary>
+            Line numbers and index
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.nouda">
+            <summary>
+            UDAs required
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.oldformat">
+            <summary>
+            Old format
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.DatalListing.only">
+            <summary>
+            List of 'ONLY' nouns specified
+            </summary>
+        </member>
+        <member name="E:Aveva.Pdms.Shared.DatalListing.InputBegin">
+            <summary>
+            INPUT BEGIN event.
+            </summary>
+        </member>
+        <member name="E:Aveva.Pdms.Shared.DatalListing.InputEnd">
+            <summary>
+            INPUT END event.
+            </summary>
+        </member>
+        <member name="E:Aveva.Pdms.Shared.DatalListing.InputAbort">
+            <summary>
+            INPUT ABORT event.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.DatalListingEventArgs">
+            <summary>
+            Event arguments for Selection Changed event.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListingEventArgs.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListingEventArgs.#ctor(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.DatalListingForm">
+            <summary>
+            Summary description for DatalListing.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Shared.DatalListingForm.Instance">
+            <summary>
+            Instance of Abstract class
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.DatalListingForm.Show">
+            <summary>
+            Show Datal Listing form
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.IElementPopulation.Source">
+            <summary>
+            Source of the Element Population (eg "MyData", "DisplayList")
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.IElementPopulation.Elements">
+            <summary>
+            Return the full population
+            A Hashtable of DbElements
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.Search.Search">
+            <summary>
+            Class to represent a Search.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.Search.Run">
+            <summary>
+            Run the search
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.Name">
+            <summary>
+            Search Name
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.Description">
+            <summary>
+            Search description
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.ItemNameContains">
+            <summary>
+            Search for items whose name contains
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.ItemTypes">
+            <summary>
+            Search for given item types
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.BeneathItem">
+            <summary>
+            Position in hierachy to start search
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.InDatabase">
+            <summary>
+            Database type to search in
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.ElementPopulation">
+            <summary>
+            Element population source
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.InVolume">
+            <summary>
+            Controls if search should be constrained within a volume
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.InVolumeOfItem">
+            <summary>
+            Search within volume of given item
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.InExplicitVolumeLowerLimit">
+            <summary>
+            Lower limit of explicit volumetric search
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.InExplicitVolumeUpperLimit">
+            <summary>
+            Upper limit of explicit volumetric search
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.CompletelyWithin">
+            <summary>
+            Should search be restricted to items completely within specifed volume
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.AttributeFilters">
+            <summary>
+            List of attribute filters
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.ColumnHeadings">
+            <summary>
+            Search result column headings
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.ColumnExpressions">
+            <summary>
+            Search result column expressions
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.Search.GridLayoutFile">
+            <summary>
+            Search result grid layout
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.Search.SearchCollection">
+            <summary>
+            A collection of Search objects
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchCollection.Add(System.String)">
+            <summary>
+            Add new search to collection with the given name
+            </summary>
+            <param name="searchName">Name of new search</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the search collection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchCollection.Remove(System.String)">
+            <summary>
+            Remove the search with the given name from the collection
+            </summary>
+            <param name="searchName">Name of search to remove</param>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchCollection.Remove(Aveva.Pdms.Shared.Search.Search)">
+            <summary>
+            Remove the given search object from the collection
+            </summary>
+            <param name="search">Search object to remove</param>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchCollection.Exists(System.String)">
+            <summary>
+            Determines if collection contains a search with the given name
+            </summary>
+            <param name="searchName">Name of search</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchCollection.Exists(Aveva.Pdms.Shared.Search.Search)">
+            <summary>
+            Determines if the collection contains given search object
+            </summary>
+            <param name="search">Search object</param>
+            <returns></returns>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchCollection.Item(System.String)">
+            <summary>
+            Indexer to return the search with the given name
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.Search.SearchGroup">
+            <summary>
+            A Class to represent a Group of searches.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroup.Load">
+            <summary>
+            Loads the search group from serialized data
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroup.Save">
+            <summary>
+            Serializes the search group contents into the specified directory
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchGroup.Searches">
+            <summary>
+            Returns the collection of searches for this group
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchGroup.GroupName">
+            <summary>
+            Name of search group
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchGroup.Directory">
+            <summary>
+            Directory into which the search group contents is saved
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchGroup.Icon">
+            <summary>
+            Icon associated with the search group
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchGroup.ReadOnly">
+            <summary>
+            Get or sets whether the search group is read only
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.Search.SearchGroupsCollection">
+            <summary>
+            A class to represent a collection of search groups.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroupsCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the search group collection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroupsCollection.Add(System.String)">
+            <summary>
+            Add new search group to collection with the given name
+            </summary>
+            <param name="searchGroupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroupsCollection.Remove(System.String)">
+            <summary>
+            Remove the search group with the given name from the collection
+            </summary>
+            <param name="searchGroupName"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroupsCollection.Remove(Aveva.Pdms.Shared.Search.SearchGroup)">
+            <summary>
+            Remove the given search group object from the collection
+            </summary>
+            <param name="searchGroup"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroupsCollection.Exists(System.String)">
+            <summary>
+            Determines if the collection contains a search group with the given name
+            </summary>
+            <param name="searchGroupName">Name of search group</param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchGroupsCollection.Exists(Aveva.Pdms.Shared.Search.SearchGroup)">
+            <summary>
+            Determines if the collection contains a given search group object
+            </summary>
+            <param name="searchGroup">Search group object</param>
+            <returns></returns>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchGroupsCollection.Item(System.String)">
+            <summary>
+            Indexer to return the search group with the given name
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.Search.SearchManager">
+            <summary>
+            A class to manage searches
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Search.SearchManager.PopulationSource(System.String)">
+            <summary>
+            Return a named IElementPopulation
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchManager.SearchGroups">
+            <summary>
+            Gets the collection of search groups
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Shared.Search.SearchManager.PopulationSources">
+            <summary>
+            Return an ArrayList of IElementPopulations
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.SelectionChangedEventHandler">
+            <summary>
+            Selection Changed event handler delegate.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.Selection">
+            <summary>
+            Summary description for Selection.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.Selection.RaiseSelectionChanged(System.Object,Aveva.Pdms.Shared.SelectionChangedEventArgs)">
+            <summary>
+            Raise the Selection Changed event.
+            </summary>
+            <param name="sender">Object raising the event</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="E:Aveva.Pdms.Shared.Selection.SelectionChanged">
+            <summary>
+            Current Element Changed event.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.SelectionChangedEventArgs">
+            <summary>
+            Event arguments for Selection Changed event.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Shared.SelectionChangedEventArgs.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Shared.ToolTipManager">
+            <summary>
+            Managment of tooltips
+            </summary>
+        </member>
+    </members>
+</doc>

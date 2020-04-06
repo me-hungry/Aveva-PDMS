@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aveva.Pdms.Graphics</name>
+    </assembly>
+    <members>
+        <member name="T:Aveva.Pdms.Graphics.Colour">
+            <summary>
+            Summary description for PdmsColour.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.Colour.Index">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.Colour.Red">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.Colour.Green">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.Colour.Blue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.Colour.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.Colours">
+            <summary>
+            Summary description for Colours.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.Colours.ColourTable">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.DrawList">
+            <summary>
+            Summary description for DrawList.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Add(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Add(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.AddOnly(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.AddOnly(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.AddReferences(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.AddWithinVolume(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Exists(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.GraphicalSelection">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Members">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.GetDrawListMember(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.GetWithinVolume(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Highlight(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Highlight(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Remove(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Remove(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Remove(Aveva.Pdms.Graphics.DrawListMember)">
+            <summary>
+            
+            </summary>
+            <param name="member"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Remove(Aveva.Pdms.Graphics.DrawListMember[])">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.RemoveOnly(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.RemoveOnly(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.RemoveOnly(Aveva.Pdms.Graphics.DrawListMember)">
+            <summary>
+            
+            </summary>
+            <param name="member"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.RemoveOnly(Aveva.Pdms.Graphics.DrawListMember[])">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.RemoveAll">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.SetColour(Aveva.Pdms.Graphics.DrawListMember[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+            <param name="colour"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.SetEdges(Aveva.Pdms.Graphics.DrawListMember[],System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+            <param name="edges"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.SetTransparency(Aveva.Pdms.Graphics.DrawListMember[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+            <param name="transparency"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.SetVisibility(Aveva.Pdms.Graphics.DrawListMember[],System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+            <param name="visibility"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.SetVisualProperties(System.Boolean,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="autoColour"></param>
+            <param name="colour"></param>
+            <param name="transparency"></param>
+            <param name="edges"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.GetVisualProperties(System.Boolean@,System.Double@,System.Double@,System.Double@,System.Int32@,System.Boolean@)">
+            <summary>
+            
+            </summary>
+            <param name="autoColour"></param>
+            <param name="colour"></param>
+            <param name="transparency"></param>
+            <param name="edges"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.SetVisualProperties(Aveva.Pdms.Graphics.DrawListMember[],System.Boolean,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="members"></param>
+            <param name="visibility"></param>
+            <param name="colour"></param>
+            <param name="transparency"></param>
+            <param name="edges"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Unhighlight(Aveva.Pdms.Database.DbElement[])">
+            <summary>
+            
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.Unhighlight(Aveva.Pdms.Database.DbElement)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawList.VisibleAll">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.DrawListEventArgs">
+            <summary>
+            Summary description for DrawListEventArgs.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawListEventArgs.#ctor(Aveva.Pdms.Graphics.DrawListChange)">
+            <summary>
+            
+            </summary>
+            <param name="eventType"></param>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.DrawListEventArgs.EventType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.DrawListEventHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.DrawListManager">
+            <summary>
+            Summary description for DrawListManager.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawListManager.getDrawList(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawListManager.getViewDrawList(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="element"></param>
+        </member>
+        <member name="E:Aveva.Pdms.Graphics.DrawListManager.Changed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.DrawListMember">
+            <summary>
+            Summary description for DrawListMember.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawListMember.SetVisualProperties(System.Boolean,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="visibility"></param>
+            <param name="colour"></param>
+            <param name="transparency"></param>
+            <param name="edges"></param>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.DrawListMember.GetVisualProperties(System.Boolean@,System.Int32@,System.Int32@,System.Boolean@)">
+            <summary>
+            
+            </summary>
+            <param name="visibility"></param>
+            <param name="colour"></param>
+            <param name="transparency"></param>
+            <param name="edges"></param>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.DrawListMember.Colour">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.DrawListMember.Edges">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.DrawListMember.Transparency">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.DrawListMember.Visibility">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.Graphics.DrawListMember.DbElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.DrawListChange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Graphics.DrawListChange.None">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Graphics.DrawListChange.Visual">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Graphics.DrawListChange.Members">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.Graphics.DrawListChange.Graphics">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.Graphics.Units">
+            <summary>
+            Units formatting.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.Units.CreateUnits">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.Units.Format(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.Graphics.Units.GetValue(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

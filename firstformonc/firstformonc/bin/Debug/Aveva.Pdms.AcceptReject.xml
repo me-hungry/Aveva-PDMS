@@ -1,0 +1,1157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aveva.Pdms.AcceptReject</name>
+    </assembly>
+    <members>
+        <member name="T:Aveva.Pdms.AcceptReject.ProgressDisplayTask">
+            <summary>
+            The ProgressDisplayTask class wraps an ProgressTask object so that the information 
+            it contains is re-formatted correctly for display on a Accept/Reject 
+            ComplexProgressDialog.
+            Like ProgressTask, ProgressDisplayTask implements the INotifyPropertyChanged 
+            interface so that it can inform any interested parties when data is 
+            updated.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressDisplayTask.#ctor(Aveva.Pdms.AcceptReject.ProgressTask)">
+            <summary>
+            Constructor for the ProgressDisplayTask class.
+            </summary>
+            <param name="source">
+            The ProgressTask that is wrapped by this instance of ProgressDisplayTask.
+            </param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressDisplayTask.getSource">
+            <summary>
+            Returns the ProgressTask object that is wrapped by this instances of 
+            ProgressDisplayTask.
+            </summary>
+            <returns>
+            The ProgressTask object wrapped by this instance of ProgressDisplayTask.
+            </returns>
+        </member>
+        <member name="E:Aveva.Pdms.AcceptReject.ProgressDisplayTask.PropertyChanged">
+            <summary>
+            Implementation of the INotifyPropertyChanged interface.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressDisplayTask.Icon">
+            <summary>
+            The image to be displayed on the table for this Task.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressDisplayTask.Task">
+            <summary>
+            The description of this Task.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressDisplayTask.Status">
+            <summary>
+            The current status of this Task.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressDisplayTask.Remaining">
+            <summary>
+            An indication of the number of steps remaining to complete this 
+            Task.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressDisplayTask.Complete">
+            <summary>
+            Indicated whether this Task has been completed, or not.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.ProgressNotification">
+            <summary>
+            The ProgressNotification class encapsulates an error or a warning that the 
+            controlling code wishes to be displayed during the progress of a 
+            ComplexProgressDialog.
+            Its data will be displayed in the Errors and Warnings table on the 
+            ComplexProgressDialog.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressNotification.#ctor(Aveva.Pdms.AcceptReject.ProgressNotification.Severity,System.String,Aveva.Pdms.AcceptReject.ProgressTask)">
+            <summary>
+            Constructor for the ProgressNotification class.
+            </summary>
+            <param name="severity">
+            Indicates whether this instance of an ProgressNotification is an 
+            Error or a Warning.
+            </param>
+            <param name="description">
+            A description of the error or warning.
+            </param>
+            <param name="task">
+            The ProgressTask that this error or warning is associated with.
+            </param>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressNotification.Icon">
+            <summary>
+            The image to be displayed on the table for this error or warning.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressNotification.Description">
+            <summary>
+            The description of this error or warning.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressNotification.AssociatedTask">
+            <summary>
+            The ProgressTask associated with error or warning.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressNotification.Level">
+            <summary>
+            Indicates the Severity of the ProgressNotification.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.ProgressNotification.Severity">
+            <summary>
+            The Severity enum is used to describe the level of a ProgressNotification
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ProgressNotification.Severity.Warning">
+            <summary>
+            Indicates a ProgressNotification is a Warning.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ProgressNotification.Severity.Error">
+            <summary>
+            Indicates a ProgressNotification is an Error.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.ProgressTask">
+            <summary>
+            The ProgressTask contains information regarding the progress of a task for 
+            display on a ComplexProgressDialog.
+            ProgressTask implements the INotifyPropertyChanged interface so that it can 
+            inform any interested parties when data is updated.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.#ctor">
+            <summary>
+            Constructor for the ProgressTask class.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.GetStep(System.Int32)">
+            <summary>
+            Recovers the Step string for the step with the specificed index.
+            </summary>
+            <param name="index">
+            The index of the Step whose string we are to recover. This is 
+            zero-indexed and must be in range of the number of steps currently 
+            set up for this ProgressTask.
+            </param>
+            <returns>
+            string: The Step string of interest.
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.SetStep(System.Int32,System.String)">
+            <summary>
+            Sets the Step string at the specified index.
+            </summary>
+            <param name="index">
+            The index of the Step string to be set. This is zero-indexed and 
+            must be in range of the number of steps currently set up for this 
+            ProgressTask.
+            </param>
+            <param name="value">
+            The new string to be set at the given Step index.
+            </param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.AddStep(System.String)">
+            <summary>
+            Adds a new step to this ProgressTask.
+            </summary>
+            <param name="value">
+            The string to be used for the new step.
+            </param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.warningAdded">
+            <summary>
+            When called it indicates that a warning has been raised during 
+            this ProgressTask.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.errorAdded">
+            <summary>
+            When called it indicates that an error has been raised during this 
+            ProgressTask.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ProgressTask.ToString">
+            <summary>
+            Returns the description of the task to help with display
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:Aveva.Pdms.AcceptReject.ProgressTask.PropertyChanged">
+            <summary>
+            Implementation of the INotifyPropertyChanged interface.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.Description">
+            <summary>
+            A description of this ProgressTask.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.NumberOfSteps">
+            <summary>
+            The number of Steps contained in this ProgressTask.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.CurrentStep">
+            <summary>
+            Index of the current step being processed in this ProgressTask.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.StepsRemaining">
+            <summary>
+            Indicates the number of steps that have not yet been completed in 
+            this ProgressTask.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.StepsFinished">
+            <summary>
+            Indicates the number of steps that have been completed in this 
+            ProgressTask.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.Complete">
+            <summary>
+            Indicates whether this ProgressTask has been completed, or not.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.HasWarnings">
+            <summary>
+            Set to true if this ProgressTask has associated warnings.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ProgressTask.HasErrors">
+            <summary>
+            Set to true is this ProgressTask has associated errors.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.ARXmlDataSet">
+            <summary>
+            Supporting class to help with the generation of an ARDataSet instance document
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.RootTagName">
+            <summary>
+            The XML Tag of the document element
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.DescriptorTagName">
+            <summary>
+            The XML Tag of the ARDescriptor element
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.ItemTagName">
+            <summary>
+            The XML Tag of the ARItem element
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.EntryTagName">
+            <summary>
+            The XML Tag of the AREntry element
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_dfltPropertyName">
+            <summary>
+            The default name for properties column in the entry grid
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_dfltPropertyDescName">
+            <summary>
+            The default column name for the description of the properties inthe entry grid
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.#ctor">
+            <summary>
+            Default constructor creates an empty AR Dataset document and uses the default change attributes (all settable non-pseudos are considered for change)
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            Constructor that is used to warp a given ArDataset XmlDocument 
+            </summary>
+            <param name="arDataSet">The dataset xml</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.#ctor(System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbAttribute,System.String},System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}})">
+            <summary>
+            Constructor creates an empty AR Dataset document
+            </summary>
+            <param name="itemProperties">The item column names for added columns</param>
+            <param name="changeAttributes">A mapping of all of the attributes that are to be considered for change.  All other attributes will be considered as differences. If null all settable attributes are considered changes, all non-settable attributes are considered to be differences</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.#ctor(Aveva.Pdms.Database.Xml.DbDocument,System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbAttribute,System.String},System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}},System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}},System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Default constructor creates an empty dataset document
+            </summary>
+            <param name="dbDocument">The DbDocument to create the dataset from</param>
+            <param name="itemProperties">The names of the item properties added by the app</param>
+            <param name="changeAttributes">A mapping of all of the attributes that are to be considered for change.  All other attributes will be considered as differences. If null all settable attributes are considered changes, all non-settable attributes are considered to be differences</param>
+            <param name="pseudoAttributes">Additional pseudo attributes to compare</param>
+            <param name="typeMap">map of temporary identity to element type, created to help later</param>
+            <param name="nodeMap">map of temporary identity to XmlElement in the DbDocument, created to help later</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.ReplaceContentWithAcceptedChanges(Aveva.Pdms.Database.Xml.DbDocument,System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Replaces the contents of a DbDocument with the accepted changes from this AR Dataset
+            </summary>
+            <param name="dbDocument">The dbDocument to clear and replace the contents of</param>
+            <param name="typeMap">A map from ARItem ID to DbElementType for this dataset</param>
+            <param name="nodeMap">A map of temporary identity to XmlElement in the original DbDocument</param>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_navigator">
+            <summary>
+            MDB navigator to avoid lots of navigator creation, this is used for database access/comparison
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_namespaceMgr">
+            <summary>
+            namespace manager for xpath queries on an ARDataset
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_doc">
+            <summary>
+            The wrapped Xml Dataset Document
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_changeAttributes">
+            <summary>
+            The change configuration for the dataset
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_itemProperties">
+            <summary>
+            The extra columns that an application can add to the item table
+            This is a map of dbAttribute to column name
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlDataSet.m_lastItemNode">
+            <summary>
+            A cache of the last item node created.
+            this is used to append children to the dataset document in the right order during population from a DbDocument
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.CreateEmptyDocument">
+            <summary>
+            Creates an empty dataset with the ARDescriptor element
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.PopulateFromDbDocument(Aveva.Pdms.Database.Xml.DbDocument,System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Adds entries for a given DbDocument to this Dataset
+            </summary>
+            <param name="dbDocument">The DbDocument to add to the AR Dataset</param>
+            <param name="typeMap">This is populated by this method,  it provides a map from the temporary ID created to the DbElementType of the node, this information would otherwise be lost</param>
+            <param name="nodeMap">A map of temporary identity to XmlElement in the original DbDocument</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.AddFromDbDocumentElement(System.Xml.XmlElement,System.Collections.Generic.Dictionary{System.Xml.XmlNode,System.String},System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Adds a given DbDocument Xml Element to this DataSet.  this also adds the elements child elements
+            Nb Item elements are only created once a change or difference has been identified for a document element.
+            </summary>
+            <param name="dbDocElement">The element to add</param>
+            <param name="tempIds">A collection of temporaryIds that have already been assigned</param>
+            <param name="typeMap">A map of temporary id to DbElementType that is populated as the DataSet elements are created</param>
+            <param name="nodeMap">A map of temporary identity to XmlElement in the original DbDocument</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.AddItemFromDbDocumentElement(System.Xml.XmlElement,Aveva.Pdms.Database.DbElementType,System.Collections.Generic.Dictionary{System.Xml.XmlNode,System.String},System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Creates an Item entry for a DbDocument element in the DataSet
+            </summary>
+            <param name="dbDocElement">The DbDocument element to create the item entry for</param>
+            <param name="etype">The DbElementType calculated form the DbDocument element</param>
+            <param name="tempIds">The collection of Temporary identities to add to</param>
+            <param name="typeMap">A Map of identity to type which ias added maintained by this method call</param>
+            <param name="nodeMap">A map of temporary identity to XmlElement in the original DbDocument</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.RaiseDbDocumentNodeProcessed">
+            <summary>
+            Raises the DbDocumentNodeProcessedEvent, This event simple indicates when a node is processed so that progress can be reported to the user.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlDataSet.AddAcceptedChanges(Aveva.Pdms.Database.Xml.DbDocument,System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Adds all accepted changes to a given dbdocument
+            </summary>
+            <param name="dbDocument">The DbDocument to add accepted changes to</param>
+            <param name="typeMap">A map from the ARItem ID attribtue to DbElementType</param>
+            <param name="nodeMap">A map of temporary identity to XmlElement in the original DbDocument</param>
+        </member>
+        <member name="E:Aveva.Pdms.AcceptReject.ARXmlDataSet.DbDocumentNodeProcessed">
+            <summary>
+            Event to feedback when a DbDocument node has been processed.
+            This is to allow progress to be presented to the user, no information about the processed node is provided.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ARXmlDataSet.NamespaceManager">
+            <summary>
+            Provides access to a namespace manager for use with XPathExpressions when using the Select and Evaluate methods on an AR DataSet instance.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ARXmlDataSet.Document">
+            <summary>
+            The document being managed by this instance.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.ARXmlNamespaces">
+            <summary>
+            Xml Namespaces and their default prefixes used by the accept reject dll
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ARXmlNamespaces.ards">
+            <summary>
+            The namespace for the aveva extension functions
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.ARXmlNamespaces.ardsPrefix">
+            <summary>
+            The default namespace prefix used for DbDocument extension functions
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.ARXmlNet">
+            <summary>
+            class to support the use of Accept/Reject when importing Xml files
+            via XmlIONet (Aveva.Pdms.Database.Xml)
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlNet.m_handler">
+            <summary>
+            handler for import start events
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.ARXmlNet.m_registeredFileNames">
+            <summary>
+            the list of registered files
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlNet.SrcFileCollection_ImportStarted(System.Object,System.EventArgs)">
+            <summary>
+            Handler to respond when an import is started
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlNet.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlNet.Assign(Aveva.Pdms.AcceptReject.ARXmlNet)">
+            <summary>
+            Default method
+            </summary>
+            <param name="that"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlNet.Register(System.String)">
+            <summary>
+            This method registers a filename, rather than a srcfile,
+            with the accept reject library.   If a file is imported using the XMLIO interface
+            with the registered filename then the accept reject interface will be shown.
+            Once imported the file is deregistered, i.e. it must be registered again to fire the Accept Reject interface.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlNet.DeRegister(System.String)">
+            <summary>
+            This method registers a filename, rather than a srcfile,
+            with the accept reject library.   If a file is imported using the XMLIO interface
+            with the registered filename then the accept reject interface will be shown.
+            Once imported the file is deregistered, i.e. it must be registered again to fire the Accept Reject interface.
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.ARXmlNet.RaiseResponse(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Passes information back to PML via events.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="E:Aveva.Pdms.AcceptReject.ARXmlNet.Response">
+            <summary>
+            Event to handle the callbacks
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.AcceptRejectResources">
+            <summary>
+            Class to help simplify resource access for DataSets
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetString(System.String)">
+            <summary>
+            Gets a string resource from the Aveva.Pdms.AcceptReject resources
+            </summary>
+            <param name="resourceID">The identity of the resource to return</param>
+            <returns>
+            The string resource if present, otherwise the following message is returned :-
+            No resource with the key 'resourceID'
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetStringFromResourceSet(System.String,System.String)">
+            <summary>
+            Gets a string resource from a given resource set
+            </summary>
+            <param name="resourceSet">The name of the resource set to get the string from</param>
+            <param name="resourceID">The identity of the resource to return</param>
+            <returns>
+            The string resource if present, otherwise the following message is returned :-
+            No resource with the key 'resourceID'
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetString(System.String,System.Object[])">
+            <summary>
+             Gets a string resource from the Aveva.Pdms.AcceptReject resources and substitutes the given
+             arguments into it
+            </summary>
+            <param name="resourceID">The identity of the resource to return</param>
+            <param name="args">The arguments to substitute into it</param>
+            <returns>
+            The string resource if present, otherwise the following message is returned :-
+            No resource with the key 'resourceSet+resourceID' {arg[1..n]}</returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetStringFromResourceSet(System.String,System.String,System.Object[])">
+            <summary>
+            Gets a string resource from a specified resource set and substitutes the given
+             arguments into it
+            </summary>
+            <param name="resourceSet">The name of the resource set to get the resource from</param>
+            <param name="resourceID">The identity of the resource to return</param>
+            <param name="args">The arguments to substitute into it</param>
+            <returns>
+            The string resource if present, otherwise the following message is returned :-
+            No resource with the key 'resourceSet+resourceID' {arg[1..n]}</returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetIcon(System.String)">
+            <summary>
+            Gets an icon resource from the Aveva.Pdms.AcceptReject resources
+            </summary>
+            <param name="resourceID">The identity of the resource to return</param>
+            <returns>
+            The icon resource if present, otherwise null
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetIconFromResourceSet(System.String,System.String)">
+            <summary>
+            Gets an Icon resource from a given resource set
+            </summary>
+            <param name="resourceSet">The name of the resource set to get the Icon from</param>
+            <param name="resourceID">The identity of the resource to return</param>
+            <returns>
+            The icon resource if present, otherwise null.
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetImage(System.String)">
+            <summary>
+            Gets an image resource from the Aveva.Pdms.AcceptReject resources
+            </summary>
+            <param name="resourceID">The identity of the resource to return</param>
+            <returns>
+            The image resource if present, otherwise null
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.GetImageFromResourceSet(System.String,System.String)">
+            <summary>
+            Gets an image resource from a given resource set
+            </summary>
+            <param name="resourceSet">The name of the resource set to get the image from</param>
+            <param name="resourceID">The identity of the resource to return</param>
+            <returns>
+            The image resource if present, otherwise null.
+            </returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.AcceptRejectResources.initResources">
+            <summary>
+            Checks the resource manager is initialised and the Aveva.Pdms.AcceptReject resources are loaded.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.AcceptRejectResources.ResourceSet">
+            <summary>
+            Gets the name of the resource set used by Aveva.Database.Xml
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.XmlIOPlugin">
+            <summary>
+            Class to interface the Accept/Reject and progress dialogs with the Aveva.Pdms.Database.Xml library
+            To use accept reject capabilities with the XML interface register the collection of source files with this
+            plugin before calling ImportToDbs.
+            
+            Notes :-
+            - this only works in graphics mode and has no effect if executed in tty mode.
+            - this interface only makes sense where there is one file per SrcFileCollection otherwise since the user will be asked to accept/reject changes on a file by file basis.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_registeredSrcFiles">
+            <summary>
+            The set of registered source file collections to pass through to accept/reject
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_sProgress">
+            <summary>
+            Simple progress dialog instance, opened before AR is fired while the data is being processed
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_cProgress">
+            <summary>
+            Complex Progress dialog instance, opened after AR is fired while the import completes.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_importStarted">
+            <summary>
+            Handler to ensure we catch all messages for registered files.
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_importCompleted">
+            <summary>
+            Handler to ensure we can respond when errors occur
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_cpThread">
+            <summary>
+            thread for complex progress dialog
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_cpTask">
+            <summary>
+            The current complex task being worked on
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_logHandler">
+            <summary>
+            used to pass log events to the complex progress dialog and error dialog
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_errorsAndWarnings">
+            <summary>
+            errors and warnings not displayed while simple progress is shown
+            </summary>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.XmlIOPlugin.m_recordErrorsAndWarnings">
+            <summary>
+            flag to keep track of errors and warnings.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.#ctor">
+            <summary>
+            private constructor to manage the singleton instance.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.Add(Aveva.Pdms.Database.Xml.ISrcFile)">
+            <summary>
+            Adds a SrcFile to the plugin so that when it is imported it opens the accept/reject interface. 
+            This registration permits changes to all given element types and attributes
+            Nb the SrcFile is automatically removed from the plugin once the import is completed
+            </summary>
+            <param name="srcFile"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.Add(Aveva.Pdms.Database.Xml.ISrcFile,System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}},System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbAttribute,System.String})">
+            <summary>
+            Adds a SrcFile to the plugin so that when it is imported it opens the accept/reject interface. 
+            This registration permits changes to all given element types and attributes
+            Notes:-
+            - the SrcFile is automatically removed from the plugin once the import is completed
+            - the default progress dialogs are shown
+            </summary>
+            <param name="srcFile"></param>
+            <param name="permittedChanges">The changes permitted in the accept reject interface, all other changes willbe marked as differences</param>
+            <param name="itemAttributes">The attributes to show for each element in the element table (max 5). this is a map of attribute to column name</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.Add(Aveva.Pdms.Database.Xml.ISrcFile,System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}},System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbAttribute,System.String},System.Boolean)">
+            <summary>
+            Adds a SrcFile to the plugin so that when it is imported it opens the accept/reject interface. 
+            This registration permits changes to all given element types and attributes
+            Nb the SrcFile is automatically removed from the plugin once the import is completed
+            </summary>
+            <param name="srcFile"></param>
+            <param name="permittedChanges">The changes permitted in the accept reject interface, all other changes willbe marked as differences</param>
+            <param name="itemAttributes">The attributes to show for each element in the element table (max 5). this is a map of attribute to column name</param>
+            <param name="showProgress">indicates whether or not to show the progress dialogs during import</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.Remove(Aveva.Pdms.Database.Xml.ISrcFile)">
+            <summary>
+            Removes srcFile from the plugin.
+            Only require to be called if a srcFile is added that must be removed prior to import
+            </summary>
+            <param name="srcFile"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.SetConversionParameters(Aveva.Pdms.Database.Xml.ISrcFile,System.Collections.Hashtable,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+            <param name="srcfile"></param>
+            <param name="parameters"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PreImportProcessing(Aveva.Pdms.Database.Xml.SrcFileCollection,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary> 
+            IImportPlugin implementation
+            This starts the recording of any errors/warnings for presentation to the user.
+            </summary>
+            <param name="fileCollection">The collection of files to be imported</param>
+            <param name="result">the current status of the import</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.srcFile_ImportStarted(System.Object,System.EventArgs)">
+            <summary>
+            trap messages for validation etc right from the start of the import
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PreImportProcessing(Aveva.Pdms.Database.Xml.ISrcFile,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            IImportPlugin implementation
+            If ShowProgress is set then this opens the simple progress dialog as the registered srcfile is processed.
+            </summary>
+            <param name="srcfile"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PreMatchProcessing(Aveva.Pdms.Database.Xml.ISrcFile,Aveva.Pdms.Database.Xml.DbDocument,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+            <param name="srcfile"></param>
+            <param name="xmlDabacon"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PostElementMatch(Aveva.Pdms.Database.Xml.ISrcFile,System.Xml.XmlNode,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            This is called after each element has been through the matching process.
+            If the element is matched then the xmlDabaconElement REF attribute will have been set to a valid database reference.
+            If the element has not been matched then REF will have been removed or set to an empty string.
+            </summary>
+            <param name="srcfile">The current srcfile being imported</param>
+            <param name="xmlDabaconElement">The Xml element that has just been through the match process</param>
+            <param name="result">The import status for the srcfile import</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PreUpdateProcessing(Aveva.Pdms.Database.Xml.ISrcFile,Aveva.Pdms.Database.Xml.DbDocument,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+            <param name="srcfile"></param>
+            <param name="xmlDabacon"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PostImportProcessing(Aveva.Pdms.Database.Xml.ISrcFile,Aveva.Pdms.Database.Xml.DbDocument,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+            <param name="srcfile"></param>
+            <param name="xmlDabacon"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.PostImportProcessing(Aveva.Pdms.Database.Xml.SrcFileCollection,Aveva.Pdms.Database.Xml.ImportStatus@)">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+            <param name="srcfiles"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ImportAborted">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ImportCancelled">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ImportRolledBack">
+            <summary>
+            IImportPlugin implementation
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.CreateCPDialog">
+            <summary>
+            Creates the complex progress dialog
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.XmlIOLogger_LogEvent(System.Object,Aveva.Pdms.Database.Xml.LogEventArgs)">
+            <summary>
+            Passes log events to the complex progress dialog
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.CPShow">
+            <summary>
+            Shows the complex progress dialog in its own thread
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.srcfile_ImportCompleted(System.Object,System.EventArgs)">
+            <summary>
+            Clear down the SP dialog if an error occurs during import and its left open
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ARXmlDataSet_DbDocumentNodeProcessed(System.Object,System.EventArgs)">
+            <summary>
+            Call back to keep track of AR dataset processing
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ClearSPState">
+            <summary>
+            Clears any state associated with the simple progress dialog
+            This closes the window if it is open
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ClearCPState">
+            <summary>
+            Clears the complex progress dialog by setting the task to complete.
+            This allows the user to select the dismiss button therefore completing the thread
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.ConvertToARDataset(Aveva.Pdms.Database.Xml.ISrcFile,Aveva.Pdms.Database.Xml.DbDocument,System.Collections.Generic.Dictionary{System.String,Aveva.Pdms.Database.DbElementType},System.Collections.Generic.Dictionary{System.String,System.Xml.XmlElement})">
+            <summary>
+            Converts the SrcFiles DbDocument to an AR formatted dataset
+            </summary>
+            <param name="srcfile">the srcfile being converted to a dataset</param>
+            <param name="dbDocument">the matched XML document being converted</param>
+            <param name="typeMap">map of temporary id to element type for all of the dabacon elements</param>
+            <param name="nodeMap">map of temporary id to original XMLElement</param>
+            <returns>The dataset as an XmlDocument or null if there were errors.</returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.StripDifferenceAttributes(Aveva.Pdms.Database.Xml.ISrcFile,Aveva.Pdms.Database.Xml.DbDocument)">
+            <summary>
+            Trims a XML document down to just the wanted changes when in non-graphics mode.
+            This removes those attributes which were just for comparison
+            </summary>
+            <param name="srcfile">The file being imported</param>
+            <param name="dbDocument">The XML document being imported</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPlugin.StripDifferenceAttributes(System.Xml.XmlElement,System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}})">
+            <summary>
+            Strips unwanted attributes from a DbDocument node
+            </summary>
+            <param name="node"></param>
+            <param name="changeAtts"></param>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.XmlIOPlugin.Instance">
+            <summary>
+            Instance of the XmlIOPlugin class
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.XmlIOPlugin.Name">
+            <summary>
+            The name of this plugin
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.XmlIOPluginConfig">
+            <summary>
+            Class to group configuration for the XMLIOPlugin
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.#ctor(Aveva.Pdms.Database.Xml.ISrcFile,System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbElementType,System.Collections.Generic.List{Aveva.Pdms.Database.DbAttribute}},System.Collections.Generic.Dictionary{Aveva.Pdms.Database.DbAttribute,System.String},System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="srcfile">The SrcFile the configuration is for</param>
+            <param name="changeAttributes">The attributes that are to be presented as changes, all others will show as differences, if null is provided all attributes are conisdered for change</param>
+            <param name="itemAttributes">The extra columns to show for each element in the item panel (attribute mapped to column name), if null no extra columns are shown</param>
+            <param name="showProgress">Whether or not to show the default progress dialogs during the import</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.ChangeAttributesForElementType(Aveva.Pdms.Database.DbElementType)">
+            <summary>
+            The change attributes for a given element type
+            </summary>
+            <param name="etype"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.DefaultChangeAttributes">
+            <summary>
+            Gets the default change attribute configuration for the MDB.  this sets all settable attributes (excl pseudos) to be changes
+            </summary>
+            <returns>the default changeattributes configuration for the MDB</returns>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.SrcFile">
+            <summary>
+            The ISrcFile instance the configuration is for
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.ChangeAttributes">
+            <summary>
+            The attributes to be considered for change
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.ItemAttributes">
+            <summary>
+            The item attributes for the specified ISrcFile to add to the item Tab on the AcceptReject dialog
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.XmlIOPluginConfig.ShowProgress">
+            <summary>
+            If true then the default progress dialog are shown during import
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog">
+            <summary>
+            AcceptRejectDialog is the core Accept/Reject dialog display class 
+            which permits user to accept or reject the data changes supplied via 
+            the PopulateDataSource() method.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            Constructor for AcceptRejectDialog class.
+            </summary>
+            <param name="data">
+            The XmlDocument to be used as a data source.
+            </param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog.PopulateDataSource">
+            <summary>
+            Sets up the XmlDocument (m_data) to be used as a source of data 
+            for display in this dialog.
+            </summary>
+            <returns>void</returns>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.AcceptRejectDialog.UpdatedXml">
+            <summary>
+            Used to recover the changed XmlDocument
+            Will return the originally supplied XmlDocument until the OK 
+            button has been pressed. After this, this time, the changed 
+            XmlDocument will be available via this property.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.UI.CloseDisabledForm">
+            <summary>
+            CloseDisabledForm is a utility extension of Form that has the Close 
+            button (cross shown top-right) disabled, but still allows an Icon 
+            to be shown left of the title bar.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.CloseDisabledForm.RemoveMenu(System.IntPtr,System.Int32,System.Int32)">
+            <summary>Extern to corresponding Win32 system call</summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.CloseDisabledForm.GetSystemMenu(System.IntPtr,System.Int32)">
+            <summary>Extern to corresponding Win32 system call</summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.CloseDisabledForm.GetMenuItemCount(System.IntPtr)">
+            <summary>Extern to corresponding Win32 system call</summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.CloseDisabledForm.DrawMenuBar(System.IntPtr)">
+            <summary>Extern to corresponding Win32 system call</summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.CloseDisabledForm.#ctor">
+            <summary>
+            Constructor for CloseDisabledForm class.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog">
+            <summary>
+            ComplexProgressDialog displays progress broken down by task and then 
+            step and enables the update of this information by the calling code 
+            changing a set of ProgressTask objects that it owns and shares with this 
+            class.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.#ctor(System.String)">
+            <summary>
+            Constructor for ComplexProgressDialog class.
+            </summary>
+            <param name="title">
+            The string to display in the title bar of the ComplexProgressDialog.
+            </param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.AddTask(Aveva.Pdms.AcceptReject.ProgressTask)">
+            <summary>
+            Adds a new ProgressTask to the ComplexProgressDialog. If called multiple 
+            times, then the ARTasks added via this method should be added in 
+            order in which they are to be carried out.
+            </summary>
+            <param name="newTask">
+            The next ProgressTask to be added to the CompelxProgressDialog.
+            </param>
+            <returns>void</returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.AddError(Aveva.Pdms.AcceptReject.ProgressNotification)">
+            <summary>
+            Adds a new ProgressNotification to the ComplexProgressDialog.
+            </summary>
+            <param name="newError">
+            The ProgressNotification to be added to the ComplexProgressDialog.
+            </param>
+            <returns>void</returns>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.AddSummaryItem(System.String)">
+            <summary>
+            Adds a new string to the text box on the Summary tab.
+            </summary>
+            <param name="newSummaryItem">
+            the string to be added.
+            </param>
+            <returns>void</returns>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.CurrentStatusString">
+            <summary>
+            The current status string to be displayed in the statusLabel.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.CurrentTaskIndex">
+            <summary>
+            The zero-based index of the current task being carried out.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.Summary">
+            <summary>
+            The string displayued on the text box on the Summary tab.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.Statistics">
+            <summary>
+            The string displayed on the text box on the Statistics tab.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.ComplexProgressDialog.AllErrorsAndWarnings">
+            <summary>
+            A List of all of the ProgressNotification objects raised during the 
+            processing of the Tasks in this ComplexProgressDialog.
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.UI.MessageBoxWithScroll">
+            <summary>
+            Message box for long messages
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.MessageBoxWithScroll.#ctor(System.String,System.String)">
+            <summary>
+            constructor
+            </summary>
+            <param name="title">The window title</param>
+            <param name="message">The message to display</param>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.UI.MessageBoxWithScroll.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.MessageBoxWithScroll.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.MessageBoxWithScroll.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.MessageBoxWithScroll.Message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="T:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog">
+            <summary>
+            SimpleProgressDialog provides a simple progress display, with a task 
+            message above a progress bar along with progress text below.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor for SimpleProgressDlg class.
+            </summary>
+            <param name="title">
+            The string to display in the title bar of the SimpleProgressDlg.
+            </param>
+            <param name="message">
+            The string to display in the main body of the SimpleProgressDlg 
+            above the progress bar.
+            </param>
+            <param name="progressString">
+            The string to display in the main body of the SimpleProgressDlg 
+            below the progress bar.
+            </param>
+        </member>
+        <member name="F:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.Value">
+            <summary>
+            The current progress value.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.Maximum">
+            <summary>
+            The maximum progress value.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.Style">
+            <summary>
+            The style of the progress bar to be displayed.
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.Message">
+            <summary>
+            Changes the message above the progress bar
+            </summary>
+        </member>
+        <member name="P:Aveva.Pdms.AcceptReject.UI.SimpleProgressDialog.ProgressString">
+            <summary>
+            Allows the progress string to be reset
+            </summary>
+        </member>
+    </members>
+</doc>
