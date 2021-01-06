@@ -1,0 +1,10 @@
+D:\git\uExportFBX\uExportFBX\obj\Debug\uExportFBX.csproj.CoreCompileInputs.cache
+D:\git\uExportFBX\uExportFBX\bin\Debug\uExportFBX.dll
+D:\git\uExportFBX\uExportFBX\bin\Debug\uExportFBX.pdb
+D:\git\uExportFBX\uExportFBX\bin\Debug\Autodesk.Navisworks.Api.dll
+D:\git\uExportFBX\uExportFBX\bin\Debug\Autodesk.Navisworks.Automation.dll
+D:\git\uExportFBX\uExportFBX\bin\Debug\Autodesk.Navisworks.Api.xml
+D:\git\uExportFBX\uExportFBX\bin\Debug\Autodesk.Navisworks.Automation.xml
+D:\git\uExportFBX\uExportFBX\obj\Debug\uExportFBX.csproj.CopyComplete
+D:\git\uExportFBX\uExportFBX\obj\Debug\uExportFBX.dll
+D:\git\uExportFBX\uExportFBX\obj\Debug\uExportFBX.pdb

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.Navisworks.Automation</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException">
+      <summary>
+Automation equivalent of DocumentFileException
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException.#ctor">
+      <summary>Creates a AutomationDocumentFileException object</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Creates a AutomationDocumentFileException</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException.#ctor(System.String)">
+      <summary>Creates a AutomationDocumentFileException object</summary>
+      <param name="message">The error message that explains the reason for the exception.</param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException.#ctor(System.String,System.Exception)">
+      <summary>Creates a AutomationDocumentFileException object</summary>
+      <param name="message">The error message that explains the reason for the exception.</param>
+      <param name="innerException">The exception that is the cause of the current exception. If the innerException parameter is not null, the current exception is raised in a catch block that handles the inner exception.</param>
+    </member>
+    <member name="T:Autodesk.Navisworks.Api.Automation.AutomationException">
+      <summary>
+Specific Exception that is thrown by the .NET Automation parts of the API when there is a general failure of Automation
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationException.#ctor">
+      <summary>Creates a AutomationException object</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Creates a AutomationException</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationException.#ctor(System.String)">
+      <summary>Creates a AutomationException object</summary>
+      <param name="message">The error message that explains the reason for the exception.</param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.AutomationException.#ctor(System.String,System.Exception)">
+      <summary>Creates a AutomationException object</summary>
+      <param name="message">The error message that explains the reason for the exception.</param>
+      <param name="innerException">The exception that is the cause of the current exception. If the innerException parameter is not null, the current exception is raised in a catch block that handles the inner exception.</param>
+    </member>
+    <member name="T:Autodesk.Navisworks.Api.Automation.NavisworksApplication">
+      <summary>
+Provides the same interface as Autodesk.Navisworks.Api.ApplicationParts.ApplicationAutomation but via Automation.
+Calls made via this class eventually call methods on Autodesk.Navisworks.Api.ApplicationParts.ApplicationAutomation.
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.#ctor">
+      <summary>
+Attempts to start up an instance of Navisworks. This will not make it visible.
+</summary>
+      <exception cref="T:Autodesk.Navisworks.Api.Automation.AutomationException">
+throws if Navisworks fails to start
+</exception>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.AddPluginAssembly(System.String)">
+      <summary>
+Adds another assembly that plugins can be loaded from.
+Assembly is loaded using the LoadFrom context and can be outside the Application root.
+</summary>
+      <param name="fileName">
+The file name of the assembly
+</param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.AppendFile(System.String)">
+      <summary>
+Appends a Navisworks supported files to the currently loaded file
+</summary>
+      <param name="fileName">The file name including extension</param>
+      <exception cref="T:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException">
+Failed to append file
+</exception>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.CreateCache(System.String)">
+      <summary>
+Creates a corresponding nwc file for specified file.
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.DisableProgress">
+      <summary>
+ Normal behavior is that Progress is displayed when performing long operations, even during Automated actions.
+ Calling this method changes behaviour such that Progress is not displayed in such cirmumstances.
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Dispose"></member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Dispose(System.Boolean)"></member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.EnableProgress">
+      <summary>
+Normal behavior is that Progress is displayed when performing long operations, even during Automated actions.
+This may have been overriden by using <see cref="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.DisableProgress">DisableProgress</see>,
+If so then calling this method will reinstate normal behavior.
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.ExecuteAddInPlugin(System.String,System.String[])">
+      <summary>
+Executes an Addin Plugin whose full name is given by pluginId, passing in the paramaters given.
+</summary>
+      <param name="pluginId"> The full identifier for the plugin. This is formed as 
+PluginRecord::Name.PluginRecord::DeveloperId
+</param>
+      <param name="parameters">Optional parameters to pass to the plugin</param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Finalize"></member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.GetRunningInstance">
+      <summary>
+Gets hold of currently running instance of the Application.
+</summary>
+      <returns>
+The running <see cref="T:Autodesk.Navisworks.Api.Automation.NavisworksApplication">NavisworksApplication</see>.
+</returns>
+      <exception cref="T:Autodesk.Navisworks.Api.Automation.AutomationException">
+Cannot get running instance of Application
+</exception>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.OpenFile(System.String,System.String[])">
+      <summary>
+Loads one or more Navisworks supported files
+</summary>
+      <param name="fileName">first file to load</param>
+      <param name="moreFiles" />
+      <exception cref="T:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException">
+Failed to open file
+</exception>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Print">
+      <summary>
+Sends the current View to the Printer
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Print(System.String)">
+      <summary>
+Sends the current View to the Printer
+</summary>
+      <param name="printer">The name of the printer to print to</param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Print(System.String,System.String)">
+      <summary>
+Sends the current View to the Printer
+</summary>
+      <param name="printer">The name of the printer to print to</param>
+      <param name="driver">The name of the printer driver to use </param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Print(System.String,System.String,System.String)">
+      <summary>
+Sends the current View to the Printer
+</summary>
+      <param name="printer">The name of the printer to print to</param>
+      <param name="driver">The name of the printer driver to use </param>
+      <param name="port">The name of the port the printer is connected to </param>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.SaveFile(System.String)">
+      <summary>
+Save the documents loaded using <see cref="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.OpenFile(System.String,System.String[])">OpenFile</see> to a single Navisworks Document
+</summary>
+      <param name="fileName">The file name including extension</param>
+      <exception cref="T:Autodesk.Navisworks.Api.Automation.AutomationDocumentFileException">
+Failed to save file
+</exception>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.StayOpen">
+      <summary>
+Normal behaviour is that the instance of Navisworks closes when the NavisworksApplication is Disposed or Finalized.
+</summary>
+    </member>
+    <member name="M:Autodesk.Navisworks.Api.Automation.NavisworksApplication.TryGetRunningInstance">
+      <summary>
+Gets hold of currently running instance of the Application.
+</summary>
+      <returns>
+The running <see cref="T:Autodesk.Navisworks.Api.Automation.NavisworksApplication">NavisworksApplication</see> or null if there on failure. 
+</returns>
+    </member>
+    <member name="P:Autodesk.Navisworks.Api.Automation.NavisworksApplication.Visible">
+      <summary>
+Controls whether the Navisworks application GUI is visible
+</summary>
+      <exception cref="T:Autodesk.Navisworks.Api.Automation.AutomationException">
+throws if get/set fails
+</exception>
+    </member>
+  </members>
+</doc>
